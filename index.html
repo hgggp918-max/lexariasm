@@ -11,79 +11,54 @@
       --pri:#7b86ff;--pri2:#9fb0ff;--txt:#eef1ff;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui;background:
-      radial-gradient(900px 500px at 70% -10%,#1a1f55,transparent 55%),
-      radial-gradient(700px 420px at 0% 10%,#151a44,transparent 60%),
-      var(--bg);color:var(--txt)}
+    body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--txt)}
     a{text-decoration:none;color:inherit}
-    .nav{position:sticky;top:0;background:rgba(10,13,26,.8);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-    .nav .wrap{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:14px 18px}
+    .nav{position:sticky;top:0;background:#0a0d1add;border-bottom:1px solid var(--line)}
+    .nav .wrap{max-width:1200px;margin:auto;display:flex;justify-content:space-between;padding:14px}
     .brand{font-weight:800;letter-spacing:2px}
-    .links a{margin:0 10px}
+    .links a{margin:0 10px;opacity:.85}
     .links .cta{background:linear-gradient(90deg,var(--pri),var(--pri2));color:#000;padding:8px 14px;border-radius:10px;font-weight:800}
-
-    .hero{min-height:90vh;display:grid;place-items:center;padding:60px 18px}
-    .hero-inner{max-width:1200px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
-    @media(max-width:900px){.hero-inner{grid-template-columns:1fr}}
-    h1{font-size:clamp(42px,6vw,80px);letter-spacing:6px}
-    .subtitle{opacity:.85;margin-bottom:20px}
-    .ip{padding:14px 18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;font-weight:800;display:inline-block}
-    .cta-row{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap}
-    .btn{padding:14px 22px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);cursor:pointer;font-weight:800}
+    .hero{padding:80px 18px;text-align:center}
+    h1{font-size:64px;letter-spacing:6px}
+    .ip{margin:20px auto;display:inline-flex;gap:10px;padding:14px 18px;border-radius:12px;background:var(--panel);border:1px solid var(--line);font-size:20px;font-weight:800}
+    .btn{padding:14px 22px;border-radius:12px;border:1px solid var(--line);background:var(--panel2);font-weight:800;cursor:pointer}
     .btn.primary{background:linear-gradient(90deg,var(--pri),var(--pri2));color:#000;border:none}
-
-    section{max-width:1200px;margin:auto;padding:90px 18px}
-    .title{text-align:center;font-size:36px;margin-bottom:50px}
+    section{max-width:1200px;margin:auto;padding:80px 18px}
+    .title{text-align:center;font-size:36px;margin-bottom:40px}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
     .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px}
-
-    footer{text-align:center;border-top:1px solid var(--line);padding:26px;opacity:.7}
+    input,textarea{width:100%;padding:12px;margin:10px 0;border-radius:10px;border:1px solid var(--line);background:var(--panel2);color:#fff}
+    footer{text-align:center;opacity:.7;padding:26px;border-top:1px solid var(--line)}
   </style>
 </head>
 <body>
 
 <nav class="nav">
   <div class="wrap">
-    <div class="brand">LexariaSmp</div>
+    <div class="brand">LEXARIASMP</div>
     <div class="links">
-      <a href="#games">Oyun</a>
+      <a href="#mods">Oyun</a>
       <a href="#market">Market</a>
-      <a href="#ticket">Destek</a>
+      <a href="#staff">Yetkili</a>
+      <a href="#ticket">Ticket</a>
       <a href="#login" class="cta">Giriş / Kayıt</a>
     </div>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-inner">
-    <div>
-      <h1>LexariaSmp</h1>
-      <div class="subtitle">Gerçek SMP Deneyimi • Dostluk • Macera</div>
-      <div class="ip" id="serverIp">sunonw.aternos.me</div>
-      <div class="cta-row">
-        <button class="btn primary" id="copyBtn">IP KOPYALA</button>
-        <a class="btn" href="https://discord.gg/JJvHprPs" target="_blank">Discord</a>
-        <a class="btn" href="#market">Market</a>
-      </div>
-      <div style="margin-top:16px">
-        <img src="https://images.alphacoders.com/134/1348384.png" style="width:100%;max-width:420px;border-radius:16px;border:1px solid #1e2450">
-      </div>
-    </div>
-    <div class="card">
-      <h3>Sunucu Bilgileri</h3>
-      <p>✔ Aktif Yetkili</p>
-      <p>✔ Lag Yok</p>
-      <p>✔ Günlük Etkinlik</p>
-    </div>
-  </div>
+  <h1>LEXARIASMP</h1>
+  <p>Survival • Topluluk • Eğlence</p>
+  <div class="ip" id="serverIp">lexariasmp.aternos.me</div><br><br>
+  <button class="btn primary" id="copyBtn">IP KOPYALA</button>
 </div>
 
-<section id="games">
+<section id="mods">
   <h2 class="title">Oyun Modu</h2>
   <div class="grid">
-    <div class="card" style="text-align:center">
+    <div class="card">
       <h3>🌍 SMP</h3>
-      <p>Hayatta kal, üs kur, arkadaşlarınla maceraya atıl.</p>
+      <p>Survival Multiplayer • Ekonomi • Etkinlikler • Topluluk</p>
     </div>
   </div>
 </section>
@@ -91,20 +66,32 @@
 <section id="market">
   <h2 class="title">Market</h2>
   <div class="grid">
-    <div class="card"><h3>VIP</h3><p>₺49.99</p><button class="btn">Satın Al</button></div>
-    <div class="card"><h3>MVIP</h3><p>₺79.99</p><button class="btn">Satın Al</button></div>
-    <div class="card"><h3>SVIP</h3><p>₺129.99</p><button class="btn">Satın Al</button></div>
+    <div class="card"><h3>VIP</h3><p>Özel komutlar</p><b>₺49</b><br><button class="btn">Satın Al</button></div>
+    <div class="card"><h3>MVIP</h3><p>Daha fazla yetki</p><b>₺79</b><br><button class="btn">Satın Al</button></div>
+    <div class="card"><h3>SVIP</h3><p>Tüm özellikler</p><b>₺129</b><br><button class="btn">Satın Al</button></div>
+  </div>
+</section>
+
+<section id="staff">
+  <h2 class="title">Yetkili Başvuru</h2>
+  <div class="grid">
+    <div class="card">
+      <input placeholder="Minecraft Adı">
+      <input placeholder="Yaş">
+      <textarea placeholder="Neden yetkili olmak istiyorsun?"></textarea>
+      <button class="btn primary">Başvur</button>
+    </div>
   </div>
 </section>
 
 <section id="ticket">
-  <h2 class="title">Destek / Ticket</h2>
+  <h2 class="title">Ticket / Destek</h2>
   <div class="grid">
     <div class="card">
-      <input placeholder="Kullanıcı Adı" style="width:100%;padding:10px;margin:6px 0">
-      <input placeholder="Konu" style="width:100%;padding:10px;margin:6px 0">
-      <textarea placeholder="Sorun" style="width:100%;padding:10px;height:120px"></textarea>
-      <button class="btn primary" style="width:100%">Gönder</button>
+      <input placeholder="Kullanıcı Adı">
+      <input placeholder="Konu">
+      <textarea placeholder="Sorunun"></textarea>
+      <button class="btn primary">Gönder</button>
     </div>
   </div>
 </section>
@@ -114,29 +101,29 @@
   <div class="grid">
     <div class="card">
       <h3>Giriş</h3>
-      <input placeholder="Kullanıcı Adı" style="width:100%;padding:10px;margin:6px 0">
-      <input type="password" placeholder="Şifre" style="width:100%;padding:10px;margin:6px 0">
-      <button class="btn primary" style="width:100%">Giriş Yap</button>
+      <input placeholder="Kullanıcı Adı">
+      <input type="password" placeholder="Şifre">
+      <button class="btn primary">Giriş Yap</button>
     </div>
     <div class="card">
       <h3>Kayıt</h3>
-      <input placeholder="Kullanıcı Adı" style="width:100%;padding:10px;margin:6px 0">
-      <input placeholder="E-posta" style="width:100%;padding:10px;margin:6px 0">
-      <input type="password" placeholder="Şifre" style="width:100%;padding:10px;margin:6px 0">
-      <button class="btn primary" style="width:100%">Kayıt Ol</button>
+      <input placeholder="Kullanıcı Adı">
+      <input placeholder="E-posta">
+      <input type="password" placeholder="Şifre">
+      <button class="btn primary">Kayıt Ol</button>
     </div>
   </div>
 </section>
 
-<footer>© 2026 LexariaSmp</footer>
+<footer>© 2026 LexariaSmp • Tüm hakları saklıdır</footer>
 
 <script>
 const btn=document.getElementById("copyBtn");
 btn.onclick=()=>{
-  navigator.clipboard.writeText(document.getElementById("serverIp").innerText);
+  navigator.clipboard.writeText("lexariasmp.aternos.me");
   btn.innerText="KOPYALANDI ✓";
   setTimeout(()=>btn.innerText="IP KOPYALA",2000);
-};
+}
 </script>
 
 </body>
