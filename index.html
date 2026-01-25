@@ -4,109 +4,161 @@
 <meta charset="UTF-8">
 <title>Eternal Client</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{background:radial-gradient(circle at top, #4c1d95 0%, #1e0633 45%, #05000a 100%);color:#fff;overflow-x:hidden;min-height:100vh;
-/* SITEYE OZEL MOR CURSOR */
-cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='6' fill='%23a855f7'/><circle cx='16' cy='16' r='10' fill='none' stroke='%23a855f7' stroke-width='2'/></svg>") 16 16, auto;}
+body{
+background:radial-gradient(circle at top, #4c1d95 0%, #1e0633 45%, #05000a 100%);
+color:#fff;
+overflow-x:hidden
+}
+
 #bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6}
 header,section,footer{position:relative;z-index:1}
 
+/* HEADER */
 header{display:flex;justify-content:space-between;align-items:center;padding:25px 60px}
-.logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:900;letter-spacing:1px}
+.logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:900}
 .logo img{
-width:72px;
-height:72px;
-object-fit:contain;
-image-rendering:auto;
-filter: grayscale(100%) brightness(1.1) contrast(1.2)
-        drop-shadow(0 0 30px rgba(168,85,247,1));
+width:72px;height:72px;
+filter:grayscale(100%) brightness(1.1) contrast(1.2)
+drop-shadow(0 0 30px rgba(168,85,247,1))
 }
-/* PURE PURPLE OVERLAY */
-.logo img{mix-blend-mode:screen;}
 
+/* NAV */
 nav a{color:#bbb;text-decoration:none;margin-left:25px;transition:.3s}
 nav a:hover{color:#a855f7}
 
+/* HERO */
 .hero{text-align:center;padding:140px 20px}
-.hero h1{font-size:60px;font-weight:900;background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1{
+font-size:60px;font-weight:900;
+background:linear-gradient(90deg,#a855f7,#ec4899);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent
+}
 .hero p{color:#aaa;margin-top:15px;font-size:18px}
 
+/* BUTTONS */
 .buttons{margin-top:40px}
-.btn{padding:15px 35px;margin:10px;border-radius:30px;font-weight:bold;border:none;cursor:pointer;font-size:16px;transition:.3s}
+.btn{
+padding:15px 35px;
+margin:10px;
+border-radius:30px;
+font-weight:bold;
+border:none;
+cursor:pointer;
+font-size:16px;
+transition:.3s
+}
 .buy{background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff}
 .buy:hover{transform:scale(1.08)}
 .discord{background:transparent;color:#fff;border:2px solid #5865F2}
 .discord:hover{background:#5865F2}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;padding:80px 60px}
-.card{background:rgba(255,255,255,.06);border-radius:20px;padding:30px;transition:.3s}
-.card:hover{transform:translateY(-10px);box-shadow:0 0 35px rgba(168,85,247,.4)}
+/* CARDS */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+padding:80px 60px
+}
+
+/* 🔥 SCROLL ANİMASYONU */
+.card{
+background:rgba(255,255,255,.06);
+border-radius:20px;
+padding:30px;
+opacity:0;
+transform:translateY(60px);
+transition:.8s ease
+}
+.card.show{
+opacity:1;
+transform:translateY(0)
+}
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 35px rgba(168,85,247,.4)
+}
 .card h3{margin-bottom:10px;color:#a855f7}
 
 footer{text-align:center;padding:30px;color:#666;font-size:14px}
-
-/* CURSOR FIX: HER YER BOS KALMASIN */
-a, button, .btn{cursor:pointer}
-canvas{pointer-events:none}
-
-/* CUSTOM CURSOR */
-body{
-  cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto;
-}
-
-/* SMOOTH SCROLL */
-html{
-  scroll-behavior: smooth;
-}
-
-/* FEATURES ANIMATION */
-#features{
-  scroll-margin-top: 120px;
-}
-
-
+</style>
 </head>
+
 <body>
 
 <canvas id="bg"></canvas>
 
 <header>
   <div class="logo">
-    <img src="eternal.png" alt="Eternal Client Logo">
+    <img src="eternal.png">
     <span>ETERNAL CLIENT</span>
   </div>
   <nav>
-    <a href="#features">Özellikler</a>
-    <a href="https://discord.com/invite/eX6w3f6H" target="_blank">İletişim</a>
+    <a href="#">Satın Al</a>
+    <a href="#">İletişim</a>
   </nav>
 </header>
 
 <section class="hero">
   <h1>Eternal Client</h1>
-  <p>FPS Boost • PvP Avantaj • Modern Arayüz</p>
+  <p>Rakipsiz Craftrise Hilesi • PvP Avantaj • Modern Arayüz</p>
   <div class="buttons">
-    <button class="btn buy" onclick="window.open('https://discord.com/invite/eX6w3f6H','_blank')">Satın Al</button>
-    <button class="btn discord" onclick="window.open('https://discord.com/invite/eX6w3f6H','_blank')">Discord</button>
+    <button class="btn buy">Satın Al</button>
+    <button class="btn discord">Discord</button>
   </div>
 </section>
 
-<section id="features" class="cards">
-  <div class="card"><h3>Neden Eternal Client?</h3><p><strong>Rakipsiz PvP Avantaj</strong><br>Üstelik <strong>ücretsiz sürümü</strong> de var.<br><br>Daha fazla bilgi için <a href="https://discord.com/invite/eX6w3f6H" target="_blank" style="color:#a855f7;text-decoration:none;font-weight:bold">Discord</a></p></div>
+<section class="cards">
+  <div class="card"><h3>Neden Eternal</h3><p>Düşük gecikme ve maksimum performans.</p></div>
   <div class="card"><h3>PvP Odaklı</h3><p>Rakiplerine karşı avantaj sağlayan özellikler.</p></div>
   <div class="card"><h3>Modern UI</h3><p>Şık, sade ve hızlı arayüz.</p></div>
 </section>
 
-<footer>© 2026 Eternal Client • All Rights Reserved</footer>
+<footer>© 2026 Eternal Client</footer>
 
 <script>
+/* ARKA PLAN */
 const canvas=document.getElementById('bg');
 const c=canvas.getContext('2d');
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
-window.addEventListener('resize',resize);resize();
-let stars=Array.from({length:140},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+0.6,s:Math.random()*0.5+0.25}))
-function draw(){c.clearRect(0,0,canvas.width,canvas.height);c.fillStyle='#a855f7';stars.forEach(st=>{c.beginPath();c.arc(st.x,st.y,st.r,0,Math.PI*2);c.fill();st.y+=st.s;if(st.y>canvas.height){st.y=0;st.x=Math.random()*canvas.width}});requestAnimationFrame(draw)}draw();
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+addEventListener('resize',resize);resize();
+
+let stars=[...Array(140)].map(()=>({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2+0.6,
+s:Math.random()*0.5+0.25
+}));
+
+function draw(){
+c.clearRect(0,0,canvas.width,canvas.height);
+c.fillStyle='#a855f7';
+stars.forEach(st=>{
+c.beginPath();
+c.arc(st.x,st.y,st.r,0,Math.PI*2);
+c.fill();
+st.y+=st.s;
+if(st.y>canvas.height){st.y=0;st.x=Math.random()*canvas.width}
+});
+requestAnimationFrame(draw)
+}
+draw();
+
+/* 🔥 SCROLL REVEAL */
+const cards=document.querySelectorAll('.card');
+window.addEventListener('scroll',()=>{
+cards.forEach(card=>{
+const top=card.getBoundingClientRect().top;
+if(top<window.innerHeight-100){
+card.classList.add('show');
+}
+});
+});
 </script>
 
 </body>
 </html>
+
