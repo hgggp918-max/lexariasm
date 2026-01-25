@@ -12,7 +12,13 @@ header,section,footer{position:relative;z-index:1}
 
 header{display:flex;justify-content:space-between;align-items:center;padding:25px 60px}
 .logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:900;letter-spacing:1px}
-.logo img{width:72px;height:72px;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 18px rgba(168,85,247,.9))}
+.logo img{
+width:72px;
+height:72px;
+object-fit:contain;
+image-rendering:auto;
+filter: hue-rotate(265deg) saturate(160%) brightness(1.1) drop-shadow(0 0 22px rgba(168,85,247,1));
+}
 
 nav a{color:#bbb;text-decoration:none;margin-left:25px;transition:.3s}
 nav a:hover{color:#a855f7}
@@ -42,7 +48,7 @@ footer{text-align:center;padding:30px;color:#666;font-size:14px}
 
 <header>
   <div class="logo">
-    <img src="eternal.png" alt="">
+    <img src="eternal.png" alt="Eternal Client Logo">
     <span>ETERNAL CLIENT</span>
   </div>
   <nav>
