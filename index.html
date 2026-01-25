@@ -6,7 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{background:radial-gradient(circle at top, #4c1d95 0%, #1e0633 45%, #05000a 100%);color:#fff;overflow-x:hidden}
+body{background:radial-gradient(circle at top, #4c1d95 0%, #1e0633 45%, #05000a 100%);color:#fff;overflow-x:hidden;min-height:100vh;
+/* SITEYE OZEL MOR CURSOR */
+cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'><circle cx='16' cy='16' r='6' fill='%23a855f7'/><circle cx='16' cy='16' r='10' fill='none' stroke='%23a855f7' stroke-width='2'/></svg>") 16 16, auto;}
 #bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6}
 header,section,footer{position:relative;z-index:1}
 
@@ -43,7 +45,23 @@ nav a:hover{color:#a855f7}
 .card h3{margin-bottom:10px;color:#a855f7}
 
 footer{text-align:center;padding:30px;color:#666;font-size:14px}
-</style>
+
+/* CUSTOM CURSOR */
+body{
+  cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto;
+}
+
+/* SMOOTH SCROLL */
+html{
+  scroll-behavior: smooth;
+}
+
+/* FEATURES ANIMATION */
+#features{
+  scroll-margin-top: 120px;
+}
+
+
 </head>
 <body>
 
@@ -55,27 +73,27 @@ footer{text-align:center;padding:30px;color:#666;font-size:14px}
     <span>ETERNAL CLIENT</span>
   </div>
   <nav>
-    <a href="https://discord.com/invite/eX6w3f6H" target="_blank">Satın Al</a>
+    <a href="#features">Özellikler</a>
     <a href="https://discord.com/invite/eX6w3f6H" target="_blank">İletişim</a>
   </nav>
 </header>
 
 <section class="hero">
   <h1>Eternal Client</h1>
-  <p>Rakipsiz Craftrise Hilesi • PvP Avantaj • Modern Arayüz</p>
+  <p>FPS Boost • PvP Avantaj • Modern Arayüz</p>
   <div class="buttons">
     <button class="btn buy" onclick="window.open('https://discord.com/invite/eX6w3f6H','_blank')">Satın Al</button>
     <button class="btn discord" onclick="window.open('https://discord.com/invite/eX6w3f6H','_blank')">Discord</button>
   </div>
 </section>
 
-<section class="cards">
-  <div class="card"><h3>Neden Eternal</h3><p>Düşük gecikme ve maksimum performans.</p></div>
+<section id="features" class="cards">
+  <div class="card"><h3>Neden Eternal Client?</h3><p><strong>Rakipsiz PvP Avantaj</strong><br>Üstelik <strong>ücretsiz sürümü</strong> de var.<br><br>Daha fazla bilgi için <a href="https://discord.com/invite/eX6w3f6H" target="_blank" style="color:#a855f7;text-decoration:none;font-weight:bold">Discord</a></p></div>
   <div class="card"><h3>PvP Odaklı</h3><p>Rakiplerine karşı avantaj sağlayan özellikler.</p></div>
   <div class="card"><h3>Modern UI</h3><p>Şık, sade ve hızlı arayüz.</p></div>
 </section>
 
-<footer>© 2026 Eternal Client • Kullanıcıların Bütün Hakları Saklıdır</footer>
+<footer>© 2026 Eternal Client • All Rights Reserved</footer>
 
 <script>
 const canvas=document.getElementById('bg');
