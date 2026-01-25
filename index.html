@@ -1,102 +1,81 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Eternal Client</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Eternal Client</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#000;color:#fff;overflow-x:hidden}
+#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}
+header,section,footer{position:relative;z-index:1}
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+header{display:flex;justify-content:space-between;align-items:center;padding:25px 60px}
+.logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:900;letter-spacing:1px}
+.logo img{width:72px;height:72px;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 18px rgba(168,85,247,.9))}
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(270deg, #0f0f1a, #1a0f2e, #0f0f1a);
-      background-size: 600% 600%;
-      animation: bgMove 15s ease infinite;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+nav a{color:#bbb;text-decoration:none;margin-left:25px;transition:.3s}
+nav a:hover{color:#a855f7}
 
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+.hero{text-align:center;padding:140px 20px}
+.hero h1{font-size:60px;font-weight:900;background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#aaa;margin-top:15px;font-size:18px}
 
-    .container {
-      padding: 40px;
-    }
+.buttons{margin-top:40px}
+.btn{padding:15px 35px;margin:10px;border-radius:30px;font-weight:bold;border:none;cursor:pointer;font-size:16px;transition:.3s}
+.buy{background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff}
+.buy:hover{transform:scale(1.08)}
+.discord{background:transparent;color:#fff;border:2px solid #5865F2}
+.discord:hover{background:#5865F2}
 
-    .logo {
-      width: 220px;
-      max-width: 80%;
-      height: auto;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 15px rgba(150, 100, 255, 0.6));
-    }
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;padding:80px 60px}
+.card{background:rgba(255,255,255,.06);border-radius:20px;padding:30px;transition:.3s}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 35px rgba(168,85,247,.4)}
+.card h3{margin-bottom:10px;color:#a855f7}
 
-    h1 {
-      font-size: 42px;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 18px;
-      opacity: 0.8;
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .discord {
-      background: #5865F2;
-      color: white;
-    }
-
-    .discord:hover {
-      background: #4752c4;
-      transform: scale(1.05);
-    }
-  </style>
+footer{text-align:center;padding:30px;color:#666;font-size:14px}
+</style>
 </head>
-
 <body>
 
-  <div class="container">
-    <img src="eternal.png" alt="Eternal Client Logo" class="logo">
+<canvas id="bg"></canvas>
 
-    <h1>ETERNAL CLIENT</h1>
-    <p>Güç. Performans. Hakimiyet.</p>
-
-    <div class="buttons">
-      <a href="https://discord.gg/eX6w3f6H" target="_blank" class="btn discord">
-        Discord
-      </a>
-    </div>
+<header>
+  <div class="logo">
+    <img src="eternal.png" alt="">
+    <span>ETERNAL CLIENT</span>
   </div>
+  <nav>
+    <a href="#">Özellikler</a>
+    <a href="#">İletişim</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Eternal Client</h1>
+  <p>FPS Boost • PvP Avantaj • Modern Arayüz</p>
+  <div class="buttons">
+    <button class="btn buy">Satın Al</button>
+    <button class="btn discord" onclick="window.open('https://discord.gg/eX6w3f6H','_blank')">Discord</button>
+  </div>
+</section>
+
+<section class="cards">
+  <div class="card"><h3>FPS Boost</h3><p>Düşük gecikme ve maksimum performans.</p></div>
+  <div class="card"><h3>PvP Odaklı</h3><p>Rakiplerine karşı avantaj sağlayan özellikler.</p></div>
+  <div class="card"><h3>Modern UI</h3><p>Şık, sade ve hızlı arayüz.</p></div>
+</section>
+
+<footer>© 2026 Eternal Client • All Rights Reserved</footer>
+
+<script>
+const canvas=document.getElementById('bg');
+const c=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener('resize',resize);resize();
+let stars=Array.from({length:140},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+0.6,s:Math.random()*0.5+0.25}))
+function draw(){c.clearRect(0,0,canvas.width,canvas.height);c.fillStyle='#a855f7';stars.forEach(st=>{c.beginPath();c.arc(st.x,st.y,st.r,0,Math.PI*2);c.fill();st.y+=st.s;if(st.y>canvas.height){st.y=0;st.x=Math.random()*canvas.width}});requestAnimationFrame(draw)}draw();
+</script>
 
 </body>
 </html>
