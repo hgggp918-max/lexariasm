@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{background:radial-gradient(circle at top, #2b0a3d 0%, #0b0214 40%, #000 100%);color:#fff;overflow-x:hidden}
+body{background:radial-gradient(circle at top, #4c1d95 0%, #1e0633 45%, #05000a 100%);color:#fff;overflow-x:hidden}
 #bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6}
 header,section,footer{position:relative;z-index:1}
 
@@ -17,8 +17,11 @@ width:72px;
 height:72px;
 object-fit:contain;
 image-rendering:auto;
-filter: grayscale(100%) brightness(1.2) sepia(100%) hue-rotate(265deg) saturate(400%) drop-shadow(0 0 28px rgba(168,85,247,1));
+filter: grayscale(100%) brightness(1.1) contrast(1.2)
+        drop-shadow(0 0 30px rgba(168,85,247,1));
 }
+/* PURE PURPLE OVERLAY */
+.logo img{mix-blend-mode:screen;}
 
 nav a{color:#bbb;text-decoration:none;margin-left:25px;transition:.3s}
 nav a:hover{color:#a855f7}
@@ -52,27 +55,27 @@ footer{text-align:center;padding:30px;color:#666;font-size:14px}
     <span>ETERNAL CLIENT</span>
   </div>
   <nav>
-    <a href="#">Özellikler</a>
-    <a href="#">İletişim</a>
+    <a href="https://discord.com/invite/eX6w3f6H" target="_blank">Satın Al</a>
+    <a href="https://discord.com/invite/eX6w3f6H" target="_blank">İletişim</a>
   </nav>
 </header>
 
 <section class="hero">
   <h1>Eternal Client</h1>
-  <p>FPS Boost • PvP Avantaj • Modern Arayüz</p>
+  <p>Rakipsiz Craftrise Hilesi • PvP Avantaj • Modern Arayüz</p>
   <div class="buttons">
-    <button class="btn buy">Satın Al</button>
-    <button class="btn discord" onclick="window.open('https://discord.gg/eX6w3f6H','_blank')">Discord</button>
+    <button class="btn buy" onclick="window.open('https://discord.com/invite/eX6w3f6H','_blank')">Satın Al</button>
+    <button class="btn discord" onclick="window.open('https://discord.com/invite/eX6w3f6H','_blank')">Discord</button>
   </div>
 </section>
 
 <section class="cards">
-  <div class="card"><h3>FPS Boost</h3><p>Düşük gecikme ve maksimum performans.</p></div>
+  <div class="card"><h3>Neden Eternal</h3><p>Düşük gecikme ve maksimum performans.</p></div>
   <div class="card"><h3>PvP Odaklı</h3><p>Rakiplerine karşı avantaj sağlayan özellikler.</p></div>
   <div class="card"><h3>Modern UI</h3><p>Şık, sade ve hızlı arayüz.</p></div>
 </section>
 
-<footer>© 2026 Eternal Client • All Rights Reserved</footer>
+<footer>© 2026 Eternal Client • Kullanıcıların Bütün Hakları Saklıdır</footer>
 
 <script>
 const canvas=document.getElementById('bg');
