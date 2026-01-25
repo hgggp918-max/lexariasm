@@ -4,172 +4,62 @@
 <meta charset="UTF-8">
 <title>Eternal Client</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body{
-    background: radial-gradient(circle at top, #1b0033, #000);
-    color:white;
-    overflow-x:hidden;
-}
-
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:25px 60px;
-}
-
-.logo{
-    font-size:26px;
-    font-weight:900;
-    letter-spacing:1px;
-}
-
-nav a{
-    color:#bbb;
-    text-decoration:none;
-    margin-left:25px;
-    transition:0.3s;
-}
-
-nav a:hover{
-    color:#a855f7;
-}
-
-.hero{
-    text-align:center;
-    padding:140px 20px;
-}
-
-.hero h1{
-    font-size:58px;
-    font-weight:900;
-    background: linear-gradient(90deg,#a855f7,#ec4899);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.hero p{
-    color:#aaa;
-    margin-top:15px;
-    font-size:18px;
-}
-
-.buttons{
-    margin-top:40px;
-}
-
-.btn{
-    padding:15px 35px;
-    margin:10px;
-    border-radius:30px;
-    font-weight:bold;
-    border:none;
-    cursor:pointer;
-    font-size:16px;
-    transition:0.3s;
-}
-
-.buy{
-    background:linear-gradient(90deg,#a855f7,#ec4899);
-    color:white;
-}
-
-.buy:hover{
-    transform:scale(1.08);
-}
-
-.discord{
-    background:transparent;
-    color:white;
-    border:2px solid #5865F2;
-}
-
-.discord:hover{
-    background:#5865F2;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;
-    padding:80px 60px;
-}
-
-.card{
-    background:rgba(255,255,255,0.05);
-    border-radius:20px;
-    padding:30px;
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 30px rgba(168,85,247,0.3);
-}
-
-.card h3{
-    margin-bottom:10px;
-    color:#a855f7;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#666;
-    font-size:14px;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#000;color:#fff;overflow-x:hidden}#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0}header,section,footer{position:relative;z-index:1}
+header{display:flex;justify-content:space-between;align-items:center;padding:25px 60px}
+.logo{display:flex;align-items:center;gap:12px;font-size:26px;font-weight:900;letter-spacing:1px}.logo img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 0 12px rgba(168,85,247,.7))}
+nav a{color:#bbb;text-decoration:none;margin-left:25px;transition:.3s}
+nav a:hover{color:#a855f7}
+.hero{text-align:center;padding:140px 20px}
+.hero h1{font-size:58px;font-weight:900;background:linear-gradient(90deg,#a855f7,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#aaa;margin-top:15px;font-size:18px}
+.buttons{margin-top:40px}
+.btn{padding:15px 35px;margin:10px;border-radius:30px;font-weight:bold;border:none;cursor:pointer;font-size:16px;transition:.3s}
+.buy{background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff}
+.buy:hover{transform:scale(1.08)}
+.discord{background:transparent;color:#fff;border:2px solid #5865F2}
+.discord:hover{background:#5865F2}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;padding:80px 60px}
+.card{background:rgba(255,255,255,.05);border-radius:20px;padding:30px;transition:.3s}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 30px rgba(168,85,247,.3)}
+.card h3{margin-bottom:10px;color:#a855f7}
+footer{text-align:center;padding:30px;color:#666;font-size:14px}
 </style>
 </head>
-
 <body>
-
+<canvas id="bg"></canvas>
 <header>
-    <div class="logo">Eternal CLIENT</div>
-    <nav>
-        <a href="#">Özellikler</a>
-        <a href="#">Fiyat</a>
-        <a href="#">İletişim</a>
-    </nav>
+  <div class="logo">
+    <img src="eternal.png" alt="Eternal Client Logo">
+    <span>ETERNAL CLIENT</span>
+  </div>
+  <nav>
+    <a href="#">Özellikler</a>
+    <a href="#">İletişim</a>
+  </nav>
 </header>
-
 <section class="hero">
-    <h1>Eternal Client</h1>
-    <p>Üstünlük Kalitesi• PvP Avantaj • Modern Arayüz</p>
-
-    <div class="buttons">
-        <button class="btn buy">Satın Al</button>
-        <button class="btn discord" onclick="window.open('https://discord.gg/eX6w3f6H','_blank')">
-            Discord
-        </button>
-    </div>
+  <h1>Eternal Client</h1>
+  <p>FPS Boost • PvP Avantaj • Modern Arayüz</p>
+  <div class="buttons">
+    <button class="btn buy">Satın Al</button>
+    <button class="btn discord" onclick="window.open('https://discord.gg/eX6w3f6H','_blank')">Discord</button>
+  </div>
 </section>
-
 <section class="cards">
-    <div class="card">
-        <h3>Eternal</h3>
-        <p>Düşük gecikme ve maksimum performans.</p>
-    </div>
-    <div class="card">
-        <h3>PvP Odaklı</h3>
-        <p>Rakiplerine karşı avantaj sağlayan özellikler.</p>
-    </div>
-    <div class="card">
-        <h3>Modern UI</h3>
-        <p>Şık, sade ve hızlı arayüz.</p>
-    </div>
+  <div class="card"><h3>Neden Eternal Client </h3><p>Düşük gecikme ve maksimum performans.</p></div>
+  <div class="card"><h3>PvP Odaklı</h3><p>Rakiplerine karşı avantaj sağlayan özellikler.</p></div>
+  <div class="card"><h3>Modern UI</h3><p>Şık, sade ve hızlı arayüz.</p></div>
 </section>
-
-<footer>
-    © 2026 Eternal Client • All Rights Reserved
-</footer>
-
+<footer>© 2026 Eternal Client •Kullanıclarınn Bütün Hakları Saklıdır</footer>
+<script>
+const canvas=document.getElementById('bg');
+const c=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener('resize',resize);resize();
+let stars=Array.from({length:120},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+0.5,s:Math.random()*0.4+0.2}))
+function draw(){c.clearRect(0,0,canvas.width,canvas.height);c.fillStyle='#a855f7';stars.forEach(st=>{c.beginPath();c.arc(st.x,st.y,st.r,0,Math.PI*2);c.fill();st.y+=st.s;if(st.y>canvas.height){st.y=0;st.x=Math.random()*canvas.width}});requestAnimationFrame(draw)}draw();
+</script>
 </body>
 </html>
