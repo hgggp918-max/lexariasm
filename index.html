@@ -2,170 +2,174 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>TALETMC | BoxMining</title>
+<title>Sunon Client</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#0b0f1e;
-  --panel:#121735;
-  --panel2:#161c44;
-  --line:#222a66;
-  --pri:#6cf2c2;
-  --pri2:#4bb3ff;
-  --txt:#eef2ff;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter;background:linear-gradient(180deg,#090c1a,#0b1028);color:var(--txt)}
-a{text-decoration:none;color:inherit}
-nav{position:sticky;top:0;background:#090c1ae6;border-bottom:1px solid var(--line)}
-nav .wrap{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:14px}
-.brand{font-weight:900;font-size:22px;letter-spacing:2px}
-.links a{margin:0 10px;opacity:.85;font-weight:600}
-.links a:hover{opacity:1}
-.cta{background:linear-gradient(90deg,var(--pri),var(--pri2));color:#000;padding:8px 14px;border-radius:12px;font-weight:800}
 
-section{max-width:1200px;margin:auto;padding:90px 20px}
-.hero{text-align:center;padding:130px 20px}
-.hero h1{font-size:68px;margin:0;letter-spacing:6px}
-.hero p{opacity:.85}
-.ip{font-size:22px;font-weight:800;margin:16px 0}
+body{
+    background: radial-gradient(circle at top, #1b0033, #000);
+    color:white;
+    overflow-x:hidden;
+}
 
-.btn{padding:14px 26px;border-radius:14px;border:none;font-weight:800;cursor:pointer}
-.primary{background:linear-gradient(90deg,var(--pri),var(--pri2));color:#000}
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 60px;
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+nav a{
+    color:#bbb;
+    text-decoration:none;
+    margin-left:25px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#a855f7;
+}
+
+.hero{
+    text-align:center;
+    padding:140px 20px;
+}
+
+.hero h1{
+    font-size:58px;
+    font-weight:900;
+    background: linear-gradient(90deg,#a855f7,#ec4899);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:#aaa;
+    margin-top:15px;
+    font-size:18px;
+}
+
+.buttons{
+    margin-top:40px;
+}
+
+.btn{
+    padding:15px 35px;
+    margin:10px;
+    border-radius:30px;
+    font-weight:bold;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.buy{
+    background:linear-gradient(90deg,#a855f7,#ec4899);
+    color:white;
+}
+
+.buy:hover{
+    transform:scale(1.08);
+}
+
+.discord{
+    background:transparent;
+    color:white;
+    border:2px solid #5865F2;
+}
+
+.discord:hover{
+    background:#5865F2;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    padding:80px 60px;
+}
 
 .card{
-  background:linear-gradient(180deg,var(--panel),#0f1430);
-  border:1px solid var(--line);
-  border-radius:22px;
-  padding:26px;
-  box-shadow:0 10px 30px #00000040;
+    background:rgba(255,255,255,0.05);
+    border-radius:20px;
+    padding:30px;
+    transition:0.3s;
 }
 
-input{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:1px solid var(--line);
-  background:var(--panel2);
-  color:#fff;
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 30px rgba(168,85,247,0.3);
 }
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
-
-.profile{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  background:var(--panel);
-  padding:8px 14px;
-  border-radius:14px;
+.card h3{
+    margin-bottom:10px;
+    color:#a855f7;
 }
-.profile img{width:36px;height:36px;border-radius:8px}
 
-.hidden{display:none}
-
-footer{text-align:center;padding:40px;border-top:1px solid var(--line);opacity:.7}
+footer{
+    text-align:center;
+    padding:30px;
+    color:#666;
+    font-size:14px;
+}
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="wrap">
-    <div class="brand">TALETMC</div>
-    <div class="links" id="navLinks">
-      <a href="#mode">Oyun Modu</a>
-      <a href="#auth">Giriş / Kayıt</a>
-    </div>
-    <div class="profile hidden" id="profile">
-      <img id="mcHead">
-      <span id="mcName"></span>
-      <button class="btn" onclick="logout()">Çıkış</button>
-    </div>
-  </div>
-</nav>
+<header>
+    <div class="logo">SUNON CLIENT</div>
+    <nav>
+        <a href="#">Özellikler</a>
+        <a href="#">Fiyat</a>
+        <a href="#">İletişim</a>
+    </nav>
+</header>
 
 <section class="hero">
-  <h1>TALETMC</h1>
-  <p>BoxMining odaklı Minecraft sunucusu</p>
-  <div class="ip">Play.TaletMc.com.tr</div>
-  <button class="btn primary" onclick="copyIP()">IP KOPYALA</button>
-</section>
+    <h1>Sunon Client</h1>
+    <p>FPS Boost • PvP Avantaj • Modern Arayüz</p>
 
-<section id="mode">
-  <div class="card" style="text-align:center">
-    <h2>⛏️ BoxMining</h2>
-    <p>Tek oyun modu • Rekabet • Kasa • Event</p>
-  </div>
-</section>
-
-<section id="auth">
-  <div class="grid">
-    <div class="card">
-      <h3>Kayıt Ol</h3>
-      <input id="r_user" placeholder="Oyuncu Adı">
-      <input id="r_mail" type="email" placeholder="E-Posta">
-      <input id="r_pass" type="password" placeholder="Şifre">
-      <button class="btn primary" onclick="register()">Kayıt Ol</button>
+    <div class="buttons">
+        <button class="btn buy">Satın Al</button>
+        <button class="btn discord" onclick="window.open('https://discord.gg/eX6w3f6H','_blank')">
+            Discord
+        </button>
     </div>
-
-    <div class="card">
-      <h3>Giriş Yap</h3>
-      <input id="l_user" placeholder="Oyuncu Adı">
-      <input id="l_pass" type="password" placeholder="Şifre">
-      <button class="btn primary" onclick="login()">Giriş Yap</button>
-    </div>
-  </div>
 </section>
 
-<footer>© 2026 TALETMC • BoxMining</footer>
+<section class="cards">
+    <div class="card">
+        <h3>FPS Boost</h3>
+        <p>Düşük gecikme ve maksimum performans.</p>
+    </div>
+    <div class="card">
+        <h3>PvP Odaklı</h3>
+        <p>Rakiplerine karşı avantaj sağlayan özellikler.</p>
+    </div>
+    <div class="card">
+        <h3>Modern UI</h3>
+        <p>Şık, sade ve hızlı arayüz.</p>
+    </div>
+</section>
 
-<script>
-function copyIP(){
-  navigator.clipboard.writeText("Play.TaletMc.com.tr");
-  alert("IP kopyalandı");
-}
-
-function register(){
-  if(!r_user.value||!r_mail.value||!r_pass.value) return alert("Tüm alanları doldur");
-  localStorage.setItem("user_"+r_user.value,JSON.stringify({
-    pass:r_pass.value,
-    mail:r_mail.value
-  }));
-  localStorage.setItem("logged",r_user.value);
-  showProfile(r_user.value);
-}
-
-function login(){
-  const data=localStorage.getItem("user_"+l_user.value);
-  if(!data) return alert("Kullanıcı yok");
-  const obj=JSON.parse(data);
-  if(obj.pass!==l_pass.value) return alert("Şifre yanlış");
-  localStorage.setItem("logged",l_user.value);
-  showProfile(l_user.value);
-}
-
-function showProfile(name){
-  document.getElementById("auth").classList.add("hidden");
-  document.getElementById("navLinks").classList.add("hidden");
-  document.getElementById("profile").classList.remove("hidden");
-  document.getElementById("mcName").innerText=name;
-  document.getElementById("mcHead").src="https://mc-heads.net/avatar/"+name+"/64";
-}
-
-function logout(){
-  localStorage.removeItem("logged");
-  location.reload();
-}
-
-window.onload=()=>{
-  const u=localStorage.getItem("logged");
-  if(u) showProfile(u);
-}
-</script>
+<footer>
+    © 2026 Sunon Client • All Rights Reserved
+</footer>
 
 </body>
 </html>
