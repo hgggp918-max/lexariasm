@@ -190,22 +190,30 @@ window.addEventListener('scroll',()=>{
   });
 });
 
-/* KORUMA KODU */
+/* GÜÇLÜ KORUMA */
 // Sağ tık engelle
-document.addEventListener('contextmenu', event => event.preventDefault());
+document.addEventListener('contextmenu', e=>e.preventDefault());
 
-// Klavye engelleme (Ctrl+U, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J)
-document.addEventListener('keydown', function(e) {
-    if(e.ctrlKey && (e.key === 'u' || e.key === 'U' || 
-                     (e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J')))){
-        e.preventDefault();
-        alert("Bu siteyi kopyalamak yasaktır!");
-    }
+// Klavye kısayolları engelle (F12, Ctrl+U, Ctrl+Shift+I/C/J, Ctrl+C/X/V)
+document.addEventListener('keydown', e=>{
+  if(
+    e.key==="F12" ||
+    (e.ctrlKey && ["u","U","c","C","x","X","v","V"].includes(e.key)) ||
+    (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key))
+  ){
+    e.preventDefault();
+  }
 });
 
-// Seçimi engelle (metin seçilemiyor)
-document.addEventListener('selectstart', event => event.preventDefault());
+// Seçimi ve sürüklemeyi engelle
+document.addEventListener('selectstart', e=>e.preventDefault());
+document.addEventListener('dragstart', e=>e.preventDefault());
+
+// Kopyala, kes, yapıştır engelle
+document.addEventListener('copy', e=>e.preventDefault());
+document.addEventListener('cut', e=>e.preventDefault());
+document.addEventListener('paste', e=>e.preventDefault());
 </script>
 
 </body>
-</html>    
+</html>
