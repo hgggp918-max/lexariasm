@@ -107,21 +107,6 @@ footer{
   color:#1e40af;
   font-size:14px;
 }
-
-/* Ses butonu */
-.audio-btn{
-  padding:8px 15px;
-  font-size:14px;
-  border-radius:10px;
-  border:none;
-  background:#1e40af;
-  color:#fff;
-  cursor:pointer;
-  margin-left:15px;
-}
-.audio-btn:hover{
-  background:#2563eb;
-}
 </style>
 </head>
 
@@ -129,17 +114,12 @@ footer{
 
 <canvas id="bg"></canvas>
 
-<audio id="sarki" loop>
-  <source src="https://cdn.discordapp.com/attachments/109392327123123123/ŞarkılarSokaklaraAit.mp3" type="audio/mpeg">
-</audio>
-
 <header>
   <div class="logo">
     <span>ETERNAL CLIENT</span>
   </div>
   <nav>
     <a href="#neden">İncele</a>
-    <button class="audio-btn" id="audioBtn">🎵 Aç / Kapat</button>
     <a href="https://discord.com/invite/eX6w3f6H" target="_blank">İletişim</a>
   </nav>
 </header>
@@ -148,8 +128,8 @@ footer{
   <h1>Eternal Client</h1>
   <p>Rakipsiz Craftrise Client • PvP Avantaj • Modern Arayüz</p>
   <div class="buttons">
-    <button class="btn buy" onclick="window.open('https://discord.com/invite/eX6w3f6H')">Satın Al</button>
-    <button class="btn discord" onclick="window.open('https://discord.com/invite/eX6w3f6H')">Discord</button>
+    <button class="btn buy" onclick="window.open('https://www.shopier.com/eternalclient','_blank')">Satın Al</button>
+    <button class="btn discord" onclick="window.open('https://discord.com/invite/eX6w3f6H','_blank')">Discord</button>
   </div>
 </section>
 
@@ -212,32 +192,13 @@ window.addEventListener('scroll',()=>{
 
 /* GÜÇLÜ KORUMA */
 document.addEventListener('contextmenu', e=>e.preventDefault());
-document.addEventListener('keydown', e=>{
-  if(
-    e.key==="F12" ||
-    (e.ctrlKey && ["u","U","c","C","x","X","v","V"].includes(e.key)) ||
-    (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key))
-  ){
-    e.preventDefault();
-  }
-});
 document.addEventListener('selectstart', e=>e.preventDefault());
 document.addEventListener('dragstart', e=>e.preventDefault());
-document.addEventListener('copy', e=>e.preventDefault());
-document.addEventListener('cut', e=>e.preventDefault());
-document.addEventListener('paste', e=>e.preventDefault());
-
-/* SES BUTONU */
-const sarki=document.getElementById('sarki');
-const audioBtn=document.getElementById('audioBtn');
-let caliyor=false;
-audioBtn.addEventListener('click',()=>{
-  if(!caliyor){
-    sarki.play();
-    caliyor=true;
-  }else{
-    sarki.pause();
-    caliyor=false;
+document.addEventListener('keydown', e=>{
+  if(e.key==="F12" ||
+     (e.ctrlKey && ["u","U","c","C","x","X","v","V"].includes(e.key)) ||
+     (e.ctrlKey && e.shiftKey && ["I","C","J"].includes(e.key))){
+    e.preventDefault();
   }
 });
 </script>
