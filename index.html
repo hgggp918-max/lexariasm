@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 html{scroll-behavior:smooth}
-body{background:radial-gradient(circle at top, #4c1d95 0%, #1e0633 45%, #05000a 100%);color:#fff;overflow-x:hidden}
+body{background:radial-gradient(circle at top, #7dd3fc 0%, #38bdf8 45%, #0ea5e9 100%);color:#fff;overflow-x:hidden}
 #bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6}
 header,section,footer{position:relative;z-index:1}
 
@@ -16,7 +16,7 @@ header{display:flex;justify-content:space-between;align-items:center;padding:25p
 .logo img{
 width:72px;height:72px;
 filter: grayscale(100%) brightness(1.1) contrast(1.2)
-drop-shadow(0 0 30px rgba(168,85,247,1));
+drop-shadow(0 0 30px rgba(59,130,246,1));
 mix-blend-mode:screen;
 }
 
@@ -27,17 +27,17 @@ margin-left:25px;
 transition:.3s;
 font-weight:600
 }
-nav a:hover{color:#a855f7}
+nav a:hover{color:#3b82f6}
 
 .hero{text-align:center;padding:140px 20px}
 .hero h1{
 font-size:60px;
 font-weight:900;
-background:linear-gradient(90deg,#a855f7,#ec4899);
+background:linear-gradient(90deg,#3b82f6,#60a5fa);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent
 }
-.hero p{color:#aaa;margin-top:15px;font-size:18px}
+.hero p{color:#e0f2fe;margin-top:15px;font-size:18px}
 
 .buttons{margin-top:40px}
 .btn{
@@ -50,10 +50,10 @@ cursor:pointer;
 font-size:16px;
 transition:.3s
 }
-.buy{background:linear-gradient(90deg,#a855f7,#ec4899);color:#fff}
+.buy{background:linear-gradient(90deg,#3b82f6,#60a5fa);color:#fff}
 .buy:hover{transform:scale(1.08)}
-.discord{background:transparent;color:#fff;border:2px solid #5865F2}
-.discord:hover{background:#5865F2}
+.discord{background:transparent;color:#fff;border:2px solid #2563eb}
+.discord:hover{background:#2563eb}
 
 .cards{
 display:grid;
@@ -73,9 +73,9 @@ transition:.6s ease
 opacity:1;
 transform:translateY(0)
 }
-.card h3{margin-bottom:10px;color:#a855f7}
+.card h3{margin-bottom:10px;color:#3b82f6}
 
-footer{text-align:center;padding:30px;color:#666;font-size:14px}
+footer{text-align:center;padding:30px;color:#dbeafe;font-size:14px}
 </style>
 </head>
 
@@ -85,7 +85,6 @@ footer{text-align:center;padding:30px;color:#666;font-size:14px}
 
 <header>
   <div class="logo">
-    
     <span>ETERNAL CLIENT</span>
   </div>
   <nav>
@@ -109,7 +108,7 @@ footer{text-align:center;padding:30px;color:#666;font-size:14px}
     <p>
       <b>Rakipsiz client</b><br>
       Premium ve Ücretsiz<br>
-      <span style="color:#a855f7;font-weight:bold">Daha fazlası için Discord</span>
+      <span style="color:#3b82f6;font-weight:bold">Daha fazlası için Discord</span>
     </p>
   </div>
   <div class="card">
@@ -133,7 +132,7 @@ window.addEventListener('resize',resize);resize();
 let stars=Array.from({length:140},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2+0.6,s:Math.random()*0.5+0.25}));
 function draw(){
 c.clearRect(0,0,canvas.width,canvas.height);
-c.fillStyle='#a855f7';
+c.fillStyle='#3b82f6';
 stars.forEach(st=>{
 c.beginPath();
 c.arc(st.x,st.y,st.r,0,Math.PI*2);
