@@ -7,48 +7,74 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 html{scroll-behavior:smooth}
-body{background:radial-gradient(circle at top, #e0f2fe 0%, #60a5fa 45%, #3b82f6 100%);color:#1e3a8a;overflow-x:hidden}
-#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.5}
-header,section,footer{position:relative;z-index:1}
+body{
+  background:radial-gradient(circle at top, #cfe8fc 0%, #60a5fa 45%, #2563eb 100%);
+  color:#1e3a8a;
+  overflow-x:hidden;
+}
+#bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  opacity:.5;
+}
 
-header{display:flex;justify-content:space-between;align-items:center;padding:25px 60px}
-.logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:900}
-.logo img{
-width:72px;height:72px;
-filter: grayscale(100%) brightness(1.1) contrast(1.2)
-drop-shadow(0 0 30px rgba(59,130,246,0.8));
-mix-blend-mode:screen;
+header,section,footer{
+  position:relative;
+  z-index:1;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:25px 60px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:26px;
+  font-weight:900;
 }
 
 nav a{
-color:#1e3a8a;
-text-decoration:none;
-margin-left:25px;
-transition:.3s;
-font-weight:600
+  color:#1e3a8a;
+  text-decoration:none;
+  margin-left:25px;
+  transition:.3s;
+  font-weight:600;
 }
 nav a:hover{color:#2563eb}
 
-.hero{text-align:center;padding:140px 20px}
-.hero h1{
-font-size:60px;
-font-weight:900;
-background:linear-gradient(90deg,#1e40af,#2563eb);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent
+.hero{
+  text-align:center;
+  padding:140px 20px;
 }
-.hero p{color:#1e3a8a;margin-top:15px;font-size:18px}
+.hero h1{
+  font-size:60px;
+  font-weight:900;
+  background:linear-gradient(90deg,#1e40af,#2563eb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p{color:#1e3a8a;margin-top:15px;font-size:18px;}
 
-.buttons{margin-top:40px}
+.buttons{
+  margin-top:40px;
+}
 .btn{
-padding:15px 35px;
-margin:10px;
-border-radius:30px;
-font-weight:bold;
-border:none;
-cursor:pointer;
-font-size:16px;
-transition:.3s
+  padding:15px 35px;
+  margin:10px;
+  border-radius:30px;
+  font-weight:bold;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  transition:.3s;
 }
 .buy{background:linear-gradient(90deg,#1e40af,#2563eb);color:#fff}
 .buy:hover{transform:scale(1.08)}
@@ -56,26 +82,31 @@ transition:.3s
 .discord:hover{background:#1e40af;color:#fff}
 
 .cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-padding:80px 60px
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+  padding:80px 60px;
 }
 .card{
-background:rgba(255,255,255,.15);
-border-radius:20px;
-padding:30px;
-opacity:0;
-transform:translateY(80px);
-transition:.6s ease
+  background:rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:30px;
+  opacity:0;
+  transform:translateY(80px);
+  transition:.6s ease;
 }
 .card.show{
-opacity:1;
-transform:translateY(0)
+  opacity:1;
+  transform:translateY(0);
 }
-.card h3{margin-bottom:10px;color:#1e40af}
+.card h3{margin-bottom:10px;color:#1e40af;}
 
-footer{text-align:center;padding:30px;color:#1e40af;font-size:14px}
+footer{
+  text-align:center;
+  padding:30px;
+  color:#1e40af;
+  font-size:14px;
+}
 </style>
 </head>
 
@@ -104,4 +135,62 @@ footer{text-align:center;padding:30px;color:#1e40af;font-size:14px}
 
 <section id="neden" class="cards">
   <div class="card">
-    <h3>Neden Eternal</h
+    <h3>Neden Eternal</h3>
+    <p>
+      <b>Rakipsiz client</b><br>
+      Premium ve Ücretsiz<br>
+      <span style="color:#1e40af;font-weight:bold">Daha fazlası için Discord</span>
+    </p>
+  </div>
+  <div class="card">
+    <h3>PvP Odaklı</h3>
+    <p>Rakiplerine karşı maksimum avantaj.</p>
+  </div>
+  <div class="card">
+    <h3>Modern UI</h3>
+    <p>Şık, sade ve hızlı arayüz.</p>
+  </div>
+</section>
+
+<footer>© 2026 Eternal Client • Tüm Hakları Saklıdır</footer>
+
+<script>
+/* ARKA PLAN YILDIZ ANİMASYONU */
+const canvas=document.getElementById('bg');
+const c=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener('resize',resize);resize();
+let stars=Array.from({length:140},()=>({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height,
+  r:Math.random()*2+0.6,
+  s:Math.random()*0.5+0.25
+}));
+function draw(){
+  c.clearRect(0,0,canvas.width,canvas.height);
+  c.fillStyle='#2563eb';
+  stars.forEach(st=>{
+    c.beginPath();
+    c.arc(st.x,st.y,st.r,0,Math.PI*2);
+    c.fill();
+    st.y+=st.s;
+    if(st.y>canvas.height){st.y=0;st.x=Math.random()*canvas.width;}
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+/* SCROLL ANİMASYON */
+const cards=document.querySelectorAll('.card');
+window.addEventListener('scroll',()=>{
+  cards.forEach(card=>{
+    if(card.getBoundingClientRect().top < window.innerHeight - 100){
+      card.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+
