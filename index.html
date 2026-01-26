@@ -107,6 +107,21 @@ footer{
   color:#1e40af;
   font-size:14px;
 }
+
+/* Ses butonu */
+.audio-btn{
+  padding:8px 15px;
+  font-size:14px;
+  border-radius:10px;
+  border:none;
+  background:#1e40af;
+  color:#fff;
+  cursor:pointer;
+  margin-left:15px;
+}
+.audio-btn:hover{
+  background:#2563eb;
+}
 </style>
 </head>
 
@@ -114,12 +129,17 @@ footer{
 
 <canvas id="bg"></canvas>
 
+<audio id="sarki" loop>
+  <source src="https://cdn.discordapp.com/attachments/109392327123123123/ŞarkılarSokaklaraAit.mp3" type="audio/mpeg">
+</audio>
+
 <header>
   <div class="logo">
     <span>ETERNAL CLIENT</span>
   </div>
   <nav>
     <a href="#neden">İncele</a>
+    <button class="audio-btn" id="audioBtn">🎵 Aç / Kapat</button>
     <a href="https://discord.com/invite/eX6w3f6H" target="_blank">İletişim</a>
   </nav>
 </header>
@@ -191,10 +211,7 @@ window.addEventListener('scroll',()=>{
 });
 
 /* GÜÇLÜ KORUMA */
-// Sağ tık engelle
 document.addEventListener('contextmenu', e=>e.preventDefault());
-
-// Klavye kısayolları engelle (F12, Ctrl+U, Ctrl+Shift+I/C/J, Ctrl+C/X/V)
 document.addEventListener('keydown', e=>{
   if(
     e.key==="F12" ||
@@ -204,15 +221,25 @@ document.addEventListener('keydown', e=>{
     e.preventDefault();
   }
 });
-
-// Seçimi ve sürüklemeyi engelle
 document.addEventListener('selectstart', e=>e.preventDefault());
 document.addEventListener('dragstart', e=>e.preventDefault());
-
-// Kopyala, kes, yapıştır engelle
 document.addEventListener('copy', e=>e.preventDefault());
 document.addEventListener('cut', e=>e.preventDefault());
 document.addEventListener('paste', e=>e.preventDefault());
+
+/* SES BUTONU */
+const sarki=document.getElementById('sarki');
+const audioBtn=document.getElementById('audioBtn');
+let caliyor=false;
+audioBtn.addEventListener('click',()=>{
+  if(!caliyor){
+    sarki.play();
+    caliyor=true;
+  }else{
+    sarki.pause();
+    caliyor=false;
+  }
+});
 </script>
 
 </body>
