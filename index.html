@@ -7,8 +7,8 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 html{scroll-behavior:smooth}
-body{background:radial-gradient(circle at top, #60a5fa 0%, #3b82f6 45%, #1e40af 100%);color:#fff;overflow-x:hidden}
-#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.6}
+body{background:radial-gradient(circle at top, #e0f2fe 0%, #60a5fa 45%, #3b82f6 100%);color:#1e3a8a;overflow-x:hidden}
+#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.5}
 header,section,footer{position:relative;z-index:1}
 
 header{display:flex;justify-content:space-between;align-items:center;padding:25px 60px}
@@ -21,23 +21,23 @@ mix-blend-mode:screen;
 }
 
 nav a{
-color:#cbd5e1;
+color:#1e3a8a;
 text-decoration:none;
 margin-left:25px;
 transition:.3s;
 font-weight:600
 }
-nav a:hover{color:#60a5fa}
+nav a:hover{color:#2563eb}
 
 .hero{text-align:center;padding:140px 20px}
 .hero h1{
 font-size:60px;
 font-weight:900;
-background:linear-gradient(90deg,#2563eb,#3b82f6);
+background:linear-gradient(90deg,#1e40af,#2563eb);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent
 }
-.hero p{color:#e0f2fe;margin-top:15px;font-size:18px}
+.hero p{color:#1e3a8a;margin-top:15px;font-size:18px}
 
 .buttons{margin-top:40px}
 .btn{
@@ -50,10 +50,10 @@ cursor:pointer;
 font-size:16px;
 transition:.3s
 }
-.buy{background:linear-gradient(90deg,#2563eb,#3b82f6);color:#fff}
+.buy{background:linear-gradient(90deg,#1e40af,#2563eb);color:#fff}
 .buy:hover{transform:scale(1.08)}
-.discord{background:transparent;color:#fff;border:2px solid #1d4ed8}
-.discord:hover{background:#1d4ed8}
+.discord{background:transparent;color:#1e40af;border:2px solid #1e40af}
+.discord:hover{background:#1e40af;color:#fff}
 
 .cards{
 display:grid;
@@ -62,7 +62,7 @@ gap:30px;
 padding:80px 60px
 }
 .card{
-background:rgba(255,255,255,.06);
+background:rgba(255,255,255,.15);
 border-radius:20px;
 padding:30px;
 opacity:0;
@@ -73,4 +73,35 @@ transition:.6s ease
 opacity:1;
 transform:translateY(0)
 }
-.card h3{margin-bottom:10px;color:#256
+.card h3{margin-bottom:10px;color:#1e40af}
+
+footer{text-align:center;padding:30px;color:#1e40af;font-size:14px}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+  <div class="logo">
+    <span>ETERNAL CLIENT</span>
+  </div>
+  <nav>
+    <a href="#neden">İncele</a>
+    <a href="https://discord.com/invite/eX6w3f6H" target="_blank">İletişim</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Eternal Client</h1>
+  <p>Rakipsiz Craftrise Client • PvP Avantaj • Modern Arayüz</p>
+  <div class="buttons">
+    <button class="btn buy" onclick="window.open('https://discord.com/invite/eX6w3f6H')">Satın Al</button>
+    <button class="btn discord" onclick="window.open('https://discord.com/invite/eX6w3f6H')">Discord</button>
+  </div>
+</section>
+
+<section id="neden" class="cards">
+  <div class="card">
+    <h3>Neden Eternal</h
