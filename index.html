@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>CSGO-STYLE WEB FPS</title>
+<title>CSGO STYLE FPS</title>
 <style>
-html,body{margin:0;padding:0;overflow:hidden;background:#000;font-family:Arial}
-#ui{position:fixed;top:0;left:0;width:100%;padding:10px;color:#0f0;display:flex;justify-content:space-between;pointer-events:none}
-#lobby{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
-.panel{background:#111;border:1px solid #0f0;padding:20px;color:#0f0;text-align:center}
-button{pointer-events:auto;background:#0f0;color:#000;border:none;padding:10px 20px;cursor:pointer}
+html,body{margin:0;overflow:hidden;background:#000;font-family:Arial}
+#lobby{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;color:#0f0}
+.panel{border:2px solid #0f0;padding:20px;text-align:center}
+button{background:#0f0;color:#000;border:none;padding:10px 20px;font-size:16px;cursor:pointer}
+#hud{position:fixed;top:10px;left:10px;color:#0f0;display:none}
 </style>
 </head>
 <body>
@@ -16,140 +16,126 @@ button{pointer-events:auto;background:#0f0;color:#000;border:none;padding:10px 2
 <div id="lobby">
   <div class="panel">
     <h2>CSGO STYLE LOBBY</h2>
-    <p>BOT + FPS + MAP</p>
-    <button onclick="start()">PLAY</button>
+    <p>CT vs T | BOT MATCH</p>
+    <button onclick="start()">START MATCH</button>
   </div>
 </div>
 
-<div id="ui">
-  <div>HP: <span id="hp">100</span></div>
-  <div>SILAH: <span id="wpn">AK</span></div>
-  <div>SKOR: <span id="score">0</span></div>
+<div id="hud">
+  HP: <span id="hp">100</span><br>
+  TEAM: CT<br>
+  WEAPON: AK
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 <script>
 let scene,camera,renderer;
-let player,velocity={x:0,z:0};
-let bullets=[],bots=[];
-let hp=100,score=0,weapon="AK";
-const keys={};
-
-document.addEventListener("keydown",e=>keys[e.key.toLowerCase()]=true);
-document.addEventListener("keyup",e=>keys[e.key.toLowerCase()]=false);
+let player,bots=[],bullets=[];
+let hp=100;
 
 function start(){
  document.getElementById("lobby").style.display="none";
- init();
- animate();
+ document.getElementById("hud").style.display="block";
+ init(); animate();
 }
 
 function init(){
  scene=new THREE.Scene();
  camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
- renderer=new THREE.WebGLRenderer({antialias:true});
+ renderer=new THREE.WebGLRenderer();
  renderer.setSize(innerWidth,innerHeight);
  document.body.appendChild(renderer.domElement);
 
  scene.add(new THREE.HemisphereLight(0xffffff,0x444444,1));
 
+ // MAP (CS STYLE)
  const floor=new THREE.Mesh(
   new THREE.PlaneGeometry(200,200),
-  new THREE.MeshStandardMaterial({color:0x2a2a2a})
+  new THREE.MeshStandardMaterial({color:0x333333})
  );
  floor.rotation.x=-Math.PI/2;
  scene.add(floor);
 
- for(let i=0;i<20;i++){
-  const wall=new THREE.Mesh(
+ for(let i=0;i<30;i++){
+  let wall=new THREE.Mesh(
    new THREE.BoxGeometry(5,5,1),
    new THREE.MeshStandardMaterial({color:0x555555})
   );
-  wall.position.set(Math.random()*100-50,2.5,Math.random()*100-50);
+  wall.position.set(Math.random()*150-75,2.5,Math.random()*150-75);
   scene.add(wall);
  }
 
  player=new THREE.Object3D();
- player.position.y=1.6;
+ player.position.set(0,1.6,0);
  scene.add(player);
- camera.position.set(0,0,0);
  player.add(camera);
+ camera.position.z=0;
 
- for(let i=0;i<6;i++)spawnBot();
+ for(let i=0;i<5;i++)spawnBot();
 
  document.body.requestPointerLock();
- document.addEventListener("mousemove",mouseMove);
+ document.addEventListener("mousemove",e=>{
+  player.rotation.y-=e.movementX*0.002;
+  camera.rotation.x-=e.movementY*0.002;
+ });
+
  document.addEventListener("click",shoot);
+ document.addEventListener("keydown",move);
 }
 
-let yaw=0,pitch=0;
-function mouseMove(e){
- yaw-=e.movementX*0.002;
- pitch-=e.movementY*0.002;
- pitch=Math.max(-1.5,Math.min(1.5,pitch));
- player.rotation.y=yaw;
- camera.rotation.x=pitch;
+function spawnBot(){
+ let bot=new THREE.Mesh(
+  new THREE.BoxGeometry(1,2,1),
+  new THREE.MeshStandardMaterial({color:0xff0000}) // TERORIST
+ );
+ bot.position.set(Math.random()*80-40,1,Math.random()*80-40);
+ bot.hp=100;
+ scene.add(bot);
+ bots.push(bot);
 }
 
 function shoot(){
- const geo=new THREE.SphereGeometry(0.05);
- const mat=new THREE.MeshBasicMaterial({color:0xffff00});
- const b=new THREE.Mesh(geo,mat);
+ let b=new THREE.Mesh(
+  new THREE.SphereGeometry(0.1),
+  new THREE.MeshBasicMaterial({color:0xffff00})
+ );
  b.position.copy(player.position);
  b.dir=new THREE.Vector3(0,0,-1).applyQuaternion(camera.quaternion);
  scene.add(b);
  bullets.push(b);
 }
 
-function spawnBot(){
- const b=new THREE.Mesh(
-  new THREE.BoxGeometry(1,2,1),
-  new THREE.MeshStandardMaterial({color:0xff0000})
- );
- b.position.set(Math.random()*80-40,1,Math.random()*80-40);
- b.hp=100;
- scene.add(b);
- bots.push(b);
-}
-
-function updatePlayer(){
- const speed=0.15;
- if(keys["w"])velocity.z=-speed;
- if(keys["s"])velocity.z=speed;
- if(keys["a"])velocity.x=-speed;
- if(keys["d"])velocity.x=speed;
- player.translateX(velocity.x);
- player.translateZ(velocity.z);
- velocity.x*=0.8;
- velocity.z*=0.8;
+function move(e){
+ if(e.key==="w")player.translateZ(-1);
+ if(e.key==="s")player.translateZ(1);
+ if(e.key==="a")player.translateX(-1);
+ if(e.key==="d")player.translateX(1);
 }
 
 function animate(){
  requestAnimationFrame(animate);
- updatePlayer();
+
+ bots.forEach(bot=>{
+  bot.lookAt(player.position);
+  bot.position.add(bot.getWorldDirection(new THREE.Vector3()).multiplyScalar(0.05));
+  if(bot.position.distanceTo(player.position)<1.5){
+   hp-=0.2;
+   document.getElementById("hp").innerText=Math.floor(hp);
+  }
+ });
 
  bullets.forEach((b,i)=>{
-  b.position.add(b.dir.clone().multiplyScalar(0.8));
+  b.position.add(b.dir.clone().multiplyScalar(1));
   bots.forEach((bot,bi)=>{
    if(b.position.distanceTo(bot.position)<1){
-    bot.hp-=weapon==="AK"?25:80;
+    bot.hp-=25;
     scene.remove(b);bullets.splice(i,1);
     if(bot.hp<=0){
      scene.remove(bot);bots.splice(bi,1);
-     score++;document.getElementById("score").innerText=score;
      spawnBot();
     }
    }
   });
- });
-
- bots.forEach(bot=>{
-  bot.lookAt(player.position);
-  bot.position.add(bot.getWorldDirection(new THREE.Vector3()).multiplyScalar(0.03));
-  if(bot.position.distanceTo(player.position)<1.5){
-   hp-=0.3;
-   document.getElementById("hp").innerText=Math.floor(hp);
-  }
  });
 
  renderer.render(scene,camera);
