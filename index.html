@@ -2,153 +2,143 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>CS Style Web Shooter - Demo</title>
+<title>V-CSGO WEB FPS</title>
 <style>
-    body {
-        margin: 0;
-        font-family: Arial;
-        background: #111;
-        color: white;
-        text-align: center;
-    }
-    #lobby {
-        padding-top: 100px;
-    }
-    canvas {
-        display: none;
-        background: #222;
-        margin: auto;
-        border: 2px solid #555;
-    }
-    button {
-        padding: 12px 25px;
-        font-size: 18px;
-        cursor: pointer;
-        background: #f5a623;
-        border: none;
-        border-radius: 6px;
-    }
+html,body{margin:0;padding:0;overflow:hidden;background:#000;color:#0f0;font-family:Arial}
+#lobby,#hud{position:fixed;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+#hud{pointer-events:none;justify-content:space-between;padding:10px;display:none}
+.panel{background:#111;padding:20px;border:1px solid #0f0}
+button{background:#0f0;color:#000;border:none;padding:10px;margin:5px;cursor:pointer}
 </style>
 </head>
 <body>
 
 <div id="lobby">
-    <h1>CS WEB DEMO</h1>
-    <p>NPC Botlara karşı savaş</p>
-    <button onclick="startGame()">Maça Gir</button>
+  <div class="panel">
+    <h2>V-CSGO LOBBY</h2>
+    <button onclick="startGame()">PLAY</button>
+    <div>COIN: <span id="coinTxt">0</span></div>
+  </div>
 </div>
 
-<canvas id="game" width="800" height="500"></canvas>
+<div id="hud">
+  <div>HP: <span id="hp">100</span></div>
+  <div>WEAPON: <span id="wpn">AK</span></div>
+  <div>COIN: <span id="coinHud">0</span></div>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 <script>
-const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
+let scene,camera,renderer;
+let player,bullets=[],bots=[];
+let hp=100,coins=+localStorage.coin||0;
+let weapon="AK";
+document.getElementById("coinTxt").innerText=coins;
 
-let player = { x: 400, y: 250, hp: 100 };
-let bullets = [];
-let bots = [];
-let score = 0;
-let playing = false;
+function dailyReward(){
+ let d=new Date().toDateString();
+ if(localStorage.last!==d){
+  coins+=100;
+  localStorage.coin=coins;
+  localStorage.last=d;
+ }
+}
+dailyReward();
 
-function startGame() {
-    document.getElementById("lobby").style.display = "none";
-    canvas.style.display = "block";
-    playing = true;
-    spawnBots();
-    gameLoop();
+function startGame(){
+ document.getElementById("lobby").style.display="none";
+ document.getElementById("hud").style.display="flex";
+ document.getElementById("coinHud").innerText=coins;
+ init();
+ animate();
 }
 
-function spawnBots() {
-    bots = [];
-    for (let i = 0; i < 5; i++) {
-        bots.push({
-            x: Math.random() * 760 + 20,
-            y: Math.random() * 460 + 20,
-            hp: 50
-        });
-    }
+function init(){
+ scene=new THREE.Scene();
+ camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
+ renderer=new THREE.WebGLRenderer();
+ renderer.setSize(innerWidth,innerHeight);
+ document.body.appendChild(renderer.domElement);
+
+ let light=new THREE.DirectionalLight(0xffffff,1);
+ light.position.set(0,10,0);
+ scene.add(light);
+
+ let floor=new THREE.Mesh(
+  new THREE.BoxGeometry(100,1,100),
+  new THREE.MeshStandardMaterial({color:0x333333})
+ );
+ scene.add(floor);
+
+ player=new THREE.Mesh(
+  new THREE.BoxGeometry(1,2,1),
+  new THREE.MeshStandardMaterial({color:0x00ff00})
+ );
+ player.position.y=1;
+ scene.add(player);
+
+ camera.position.set(0,2,5);
+
+ for(let i=0;i<5;i++)spawnBot();
 }
 
-document.addEventListener("mousemove", e => {
-    const rect = canvas.getBoundingClientRect();
-    player.x = e.clientX - rect.left;
-    player.y = e.clientY - rect.top;
+function spawnBot(){
+ let b=new THREE.Mesh(
+  new THREE.BoxGeometry(1,2,1),
+  new THREE.MeshStandardMaterial({color:0xff0000})
+ );
+ b.position.set(Math.random()*20-10,1,Math.random()*20-10);
+ b.hp=50;
+ scene.add(b);
+ bots.push(b);
+}
+
+window.addEventListener("keydown",e=>{
+ if(e.key==="1")weapon="AK";
+ if(e.key==="2")weapon="AWP";
 });
 
-document.addEventListener("click", () => {
-    if (!playing) return;
-    bullets.push({ x: player.x, y: player.y });
+window.addEventListener("click",()=>{
+ let geo=new THREE.SphereGeometry(0.1);
+ let mat=new THREE.MeshBasicMaterial({color:0xffff00});
+ let bullet=new THREE.Mesh(geo,mat);
+ bullet.position.copy(player.position);
+ bullet.dir=new THREE.Vector3(0,0,-1).applyQuaternion(camera.quaternion);
+ scene.add(bullet);
+ bullets.push(bullet);
 });
 
-function update() {
-    bullets.forEach(b => b.y -= 6);
+function animate(){
+ requestAnimationFrame(animate);
 
-    bots.forEach(bot => {
-        if (bot.x < player.x) bot.x += 1;
-        if (bot.x > player.x) bot.x -= 1;
-        if (bot.y < player.y) bot.y += 1;
-        if (bot.y > player.y) bot.y -= 1;
+ bots.forEach(b=>{
+  b.lookAt(player.position);
+  b.position.add(b.getWorldDirection(new THREE.Vector3()).multiplyScalar(0.02));
+  if(b.position.distanceTo(player.position)<1){
+   hp-=0.1;
+   document.getElementById("hp").innerText=Math.floor(hp);
+  }
+ });
 
-        if (Math.hypot(bot.x - player.x, bot.y - player.y) < 15) {
-            player.hp -= 0.2;
-        }
-    });
-
-    bullets.forEach(b => {
-        bots.forEach(bot => {
-            if (Math.hypot(bot.x - b.x, bot.y - b.y) < 15) {
-                bot.hp -= 25;
-                b.y = -100;
-                if (bot.hp <= 0) {
-                    score++;
-                    bot.x = Math.random() * 760;
-                    bot.y = Math.random() * 460;
-                    bot.hp = 50;
-                }
-            }
-        });
-    });
-}
-
-function draw() {
-    ctx.clearRect(0,0,800,500);
-
-    // Player
-    ctx.fillStyle = "cyan";
-    ctx.beginPath();
-    ctx.arc(player.x, player.y, 10, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Bots
-    ctx.fillStyle = "red";
-    bots.forEach(bot => {
-        ctx.beginPath();
-        ctx.arc(bot.x, bot.y, 10, 0, Math.PI * 2);
-        ctx.fill();
-    });
-
-    // Bullets
-    ctx.fillStyle = "yellow";
-    bullets.forEach(b => ctx.fillRect(b.x - 2, b.y, 4, 8));
-
-    // HUD
-    ctx.fillStyle = "white";
-    ctx.fillText("HP: " + Math.floor(player.hp), 10, 20);
-    ctx.fillText("SKOR: " + score, 10, 40);
-
-    if (player.hp <= 0) {
-        playing = false;
-        ctx.fillText("ÖLDÜN - SAYFAYI YENİLE", 330, 250);
+ bullets.forEach((bu,i)=>{
+  bu.position.add(bu.dir.multiplyScalar(0.5));
+  bots.forEach((bo,bi)=>{
+   if(bu.position.distanceTo(bo.position)<1){
+    bo.hp-=weapon==="AWP"?100:25;
+    scene.remove(bu);bullets.splice(i,1);
+    if(bo.hp<=0){
+     scene.remove(bo);bots.splice(bi,1);
+     coins+=10;localStorage.coin=coins;
+     document.getElementById("coinHud").innerText=coins;
+     spawnBot();
     }
+   }
+  });
+ });
+
+ renderer.render(scene,camera);
 }
 
-function gameLoop() {
-    if (!playing) return;
-    update();
-    draw();
-    requestAnimationFrame(gameLoop);
-}
 </script>
-
 </body>
 </html>
