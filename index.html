@@ -1,612 +1,154 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="LeaderOS">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?cache=1767125068">
-
-    <title>erosnw.com - Pvpnin Adresi | Eros Network</title>
-    <meta name="description" content="Türkiye&#039;nin en iyi Boxmining deneyimini yaşamak için aramıza katılın! play.ErosNw.com- 1.16.5 ve üzeri."/>
-    <link rel="canonical" href="https://erosnw.com/" />
-    <meta property="og:type" content="website"/>
-    <meta property="og:title" content="erosnw.com - Pvpnin Adresi | Eros Network"/>
-    <meta property="og:description" content="Türkiye&#039;nin en iyi Boxmining deneyimini yaşamak için aramıza katılın! play.ErosNw.com- 1.16.5 ve üzeri."/>
-    <meta property="og:url" content="https://erosnw.com/" />
-    <meta property="og:site_name" content="erosnw.com"/>
-    
-    <!-- CSRF -->
-    <meta name="csrf-token" content="bf79b96f91ce1a14bfb3345110c0ab2751a3d3cef8fcbe3bc93ef42199bdfd30">
-
-    <!-- EXTRAS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@1.4.0/dist/select2-bootstrap4.min.css">
-    <link rel="stylesheet" href="https://npmcdn.com/flickity@2/dist/flickity.css">
-
-    <!-- THEMES -->
-    <link rel="stylesheet" type="text/css" href="/assets/gale/css/app.1767125012.css">
-    <link rel="stylesheet" type="text/css" href="/assets/gale/css/bootstrap-grid.min.1767125012.css">
-
-    <link rel="stylesheet" type="text/css" href="/assets/gale/css/plugins/ckeditor/content-styles.1767125012.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tippy.js/6.3.2/animations/scale.min.css"/>
-
-    <!-- AlpineJS Plugins -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs-collapse/3.14.8/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-tooltip@1.x.x/dist/cdn.min.js" defer></script>
-
-    <!-- AlpineJS Core -->
-		<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.5/dist/cdn.min.js"></script>
-    <!-- Fast Average Color Plugin -->
-    <script src="https://cdn.jsdelivr.net/npm/fast-average-color@9.4.0/dist/index.browser.min.js"></script>
-
-    <script src="/assets/gale/js/theme.1767125012.js"></script>
-
-    <!-- THEME SETTINGS -->
-        <style>
-        :root {
-        --color-indigo-50: 240 249 255;--color-indigo-100: 224 242 254;--color-indigo-200: 186 230 253;--color-indigo-300: 125 211 252;--color-indigo-400: 56 189 248;--color-indigo-500: 14 165 233;--color-indigo-600: 2 132 199;--color-indigo-700: 3 105 161;--color-indigo-800: 7 89 133;--color-indigo-900: 12 74 110;--color-voon-950: 8 8 8;
-          --color-voon-900: 10 10 10;
-          --color-voon-800: 14 14 14;
-          --color-voon-700: 18 18 18;
-          --color-voon-background: 18 18 18;
-          --color-voon-card: 14 14 14;
-          --color-neutral-900: 23 23 23;
-          --color-zinc-600: 82 82 91;        }
-    </style>
-
-        
-    <!-- CUSTOM CSS -->
-    <style type="text/css">
-            </style>
-
-    <!-- ROLE CSS -->
-    <style type="text/css">
-                
-                        
-                    </style>
-
-    </head>
-<body x-data="body">
-<div id="app">
-    
-
-<header id="header" class="hidden sm:block">
-    <div class="section flex justify-between items-center py-3">
-        <div class="flex gap-20 items-center">
-            <a href="/">
-                <img class="h-[5.5rem]" src="/assets/core/images/uploads/59abbd8d3bb416ad1f5c3b8ba39512b5.png?cache=1767125068" alt="erosnw.com - Logo">
-            </a>
-            <nav class="gap-6 lg:flex">
-                                                            <a href="/" class="nav-item mr-2 active" >
-                            Anasayfa                        </a>
-                                                                                <a href="/store" class="nav-item mr-2 " >
-                            Mağaza                        </a>
-                                                                                <a href="https://erosnw.com/credits/charge" class="nav-item mr-2 " >
-                            Kredi Satın Al                        </a>
-                                                                                <a href="https://erosnw.com/credits/send" class="nav-item mr-2 " >
-                            Kredi Gönder                        </a>
-                                                </nav>
-        </div>
-        <div>
-                            <a href="/login/" class="rounded-xl bg-indigo-500 py-3 px-6 text-white text-sm flex gap-3 items-center font-medium">
-                    Giriş Yap                    <i class="fas fa-angle-right"></i>
-                </a>
-                    </div>
-    </div>
-</header>
-
-<!-- Mobile menu, show/hide based on menu state. -->
-<div class="sm:hidden" id="mobile-menu" x-data="{mainMenu: false}">
-    <div class="flex items-center justify-between space-y-1 px-2 pt-2 pb-3">
-        <a href="/">
-            <img class="h-[3rem]" src="/assets/core/images/uploads/59abbd8d3bb416ad1f5c3b8ba39512b5.png?cache=1767125068" alt="erosnw.com - Logo">
-        </a>
-
-        <!-- Mobile menu button-->
-        <button @click="mainMenu = ! mainMenu" type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-            <svg x-cloak="" x-show="!mainMenu" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-            <svg x-cloak x-show="mainMenu" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
-    <div x-cloak x-show="mainMenu" class="space-y-1 px-2 pt-2 pb-3">
-                                    <a href="/" class="text-white block px-3 py-2 rounded-md text-base font-medium " aria-current="page" >Anasayfa</a>
-                                                <a href="/store" class="text-white block px-3 py-2 rounded-md text-base font-medium " aria-current="page" >Mağaza</a>
-                                                <a href="https://erosnw.com/credits/charge" class="text-white block px-3 py-2 rounded-md text-base font-medium " aria-current="page" >Kredi Satın Al</a>
-                                                <a href="https://erosnw.com/credits/send" class="text-white block px-3 py-2 rounded-md text-base font-medium " aria-current="page" >Kredi Gönder</a>
-                                        <a href="/login/" class="text-white block px-3 py-2 rounded-md text-base font-medium">Giriş Yap</a>
-                            <a href="/register/" class="text-white block px-3 py-2 rounded-md text-base font-medium">Kayıt Ol</a>
-                        </div>
-</div>
-    <main class="main" role="main">
-        
-
-<section id="__heroSection" x-data="carousel()" x-init="init()">
-    <div class="carousel overflow-hidden" x-ref="carousel">
-        <div class="">
-            <div class="absolute top-0 left-0 bg-cover bg-center w-full h-full" style="background-image: url('/assets/gale/img/bg-hero.png?cache=1767125068')">
-                <div class="bg-gradient-to-tl from-indigo-800/50 to-indigo-800/20 absolute top-0 left-0 w-full h-full"></div>
-            </div>
-            <div class="section pt-36 pb-60 lg:pt-48 lg:pb-96 relative px-6 z-20">
-                <h1 class="text-white text-5xl font-extrabold mt-6 max-w-2xl">
-                    1 Numaralı Minecraft Sunucusuna Katılın!                </h1>
-                <p class="text-white/75 text-xl font-semibold max-w-lg mt-2">
-                    erosnw.com ücretsiz bir Minecraft sunucusudur. Aramıza katılın ve sunucunun en iyisi olun!                </p>
-                <div class="flex items-center gap-4 mt-10 relative z-10">
-                    <a href="/play/" class="rounded-2xl py-3 px-8 font-semibold bg-gradient-to-r from-indigo-500 to-indigo-600 text-white relative flex items-center">
-                        <i class="fas fa-gamepad text-2xl mr-3"></i>
-                        Şimdi Oyna                    </a>
-                                            <a href="/register/" class="font-semibold bg-voon-800 rounded-2xl relative text-white py-3 px-8 flex items-center">
-                            <i class="fas fa-user-plus text-2xl mr-3"></i>
-                            Kayıt Ol                        </a>
-                                    </div>
-            </div>
-        </div>
-
-                                </div>
-    <svg class="absolute -bottom-12 w-full left-0 z-20" style="filter: drop-shadow(0 -85px 45px rgba(0, 0, 0, .5))" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1366 134">
-        <path class="fill-voon-bg" d="M0,91.94C43.71,59.18,114.51,16.29,207.47,3.82c6.79-0.91,32.2-3.96,66.16-3.42 c107.54,1.74,148.6,36.78,252.32,50.55c34.39,4.57,60.71,5.41,78.43,5.96c42.7,1.34,62.27-1.19,67.62-1.92 c32.33-4.43,52.86-13.09,65-17c55.04-17.72,92.95,11.78,189,35c44.78,10.83,82.19,14.22,157,21c0,0,136.88,12.41,195.62-26.42 c0.33-0.22,3.48-2.33,7.91-4.91c4.28-2.49,9.99-5.54,16.95-8.53C1328,43.62,1350.63,41.3,1366,41c0,31,0,62,0,93 c-455.33,0-910.67,0-1366,0C0,119.98,0,105.96,0,91.94z"/>
-    </svg>
-</section>
-
-    <section class="relative z-20 pb-10 -mt-32 section">
-        <div class="grid gap-12 lg:grid-cols-10">
-            <div class="lg:col-span-10 card card-simple p-6 text-white">
-                <div class="absolute opacity-5 top-0 left-0 w-full h-full bg-cover bg-bottom" style="background-image: url('/assets/gale/img/join-widget-bg.png')"></div>
-                <div class="flex flex-col md:flex-row justify-between gap-6 items-center text-center md:text-left relative">
-                    <div>
-                        <div>
-                            <h2 class="font-bold text-2xl mb-2">Oyuna dahil olma zamanı!</h2>
-                        </div>
-                        <div class="text-indigo-100/75">
-                            erosnw.com ile Minecraft keyfinizi ikiye katlayın. Profesyonelce yapılmış bu sunucu eğlencenin yeni adresi                        </div>
-                    </div>
-                    <div class="flex flex-col items-center justify-center">
-                        	                        <div class="cursor-pointer btn-before rounded-lg bg-indigo-600 py-3 px-5 text-white relative" data-toggle="copyip" data-clipboard-action="copy" data-clipboard-text="play.ErosNw.com">play.ErosNw.com</div>
-                                                	                        <span class="text-white/50 text-sm mt-3" data-toggle="onlinebox"><span class="text-white" data-toggle="onlinetext" server-ip="play.ErosNw.com">-/-</span>
-		                      oyuncu aktif                                            </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-<section class="section pt-12 pb-20 gap-12 grid lg:grid-cols-10">
-    <div class="lg:col-span-7">
-        <h3 class="text-white font-bold text-2xl">Haber</h3>
-                    <div class="alert alert-danger mb-0">
-    <i class="fa fa-times-circle d-none d-md-inline-block"></i>
-    Haber bulunamadı!</div>            </div>
-	
-					<div class="lg:col-span-3 flex flex-col gap-8">
-																				<div>
-							<div class="flex justify-between items-center">
-								<span class="text-white/75 font-medium text-lg font-bold">En Çok Kredi Yükleyen</span>
-								<span class="text-white/75">Tüm Zamanlar</span>
-							</div>
-							<div class="mt-6 card p-6 !overflow-visible hovered flex gap-4">
-								<div class="-mt-10 -ml-10 relative">
-									<div class="bg-top bg-cover w-20 h-24 rounded-2xl"
-     style="background-image: url('https://minotar.net/armor/body/prime61/120')">
-</div>									<img class="absolute -bottom-10 -left-2 w-16" src="/assets/gale/img/medal-1.1767125012.svg" alt="">
-								</div>
-								<div>
-									<span class="text-white/75 text-xs uppercase">Kullanıcı Adı</span>
-									<div class="font-semibold text-white text-xl">prime61</div>
-									<p class="mt-4 text-white/60 text-sm w-40">
-										<strong class="text-white">1,330.00 ₺</strong>
-									</p>
-								</div>
-								<span class="absolute right-6 top-6 text-red-500/20 text-3xl">
-									<i class="fas fa-heart"></i>
-								</span>
-							</div>
-						</div>
-													
-																				<div>
-							<div class="flex justify-between items-center">
-								<span class="text-white/75 font-medium text-lg font-bold">En Çok Kredi Yükleyen</span>
-								<span class="text-white/75">Bu ay</span>
-							</div>
-							<div class="mt-6 card p-6 !overflow-visible hovered flex gap-4">
-								<div class="-mt-10 -ml-10 relative">
-									<div class="bg-top bg-cover w-20 h-24 rounded-2xl"
-     style="background-image: url('https://minotar.net/armor/body/prime61/120')">
-</div>									<img class="absolute -bottom-10 -left-2 w-16" src="/assets/gale/img/medal-1.1767125012.svg" alt="">
-								</div>
-								<div>
-									<span class="text-white/75 text-xs uppercase">Kullanıcı Adı</span>
-									<div class="font-semibold text-white text-xl">prime61</div>
-									<p class="mt-4 text-white/60 text-sm w-40">
-										Bu ay toplam <strong class="text-white">1,330.00 ₺</strong> bağış yaptı.									</p>
-								</div>
-								<span class="absolute right-6 top-6 text-red-500/20 text-3xl">
-									<i class="fas fa-heart"></i>
-								</span>
-							</div>
-						</div>
-													
-															<div>
-							<span class="text-white/75 font-medium text-lg font-bold">Son Kredi Yükleyenler</span>
-							<div class="card hovered mt-3">
-								<table class="w-full overflow-hidden">
-									<thead>
-									<tr class="relative z-10 text-xs uppercase text-gray-400 font-medium bg-voon-950">
-										<th class="text-left p-3 relative z-10">Kullanıcı Adı</th>
-										<th class="p-3 relative z-10">Miktar</th>
-									</tr>
-									</thead>
-									<tbody class="text-gray-200 text-sm text-center relative z-10">
-																			<tr>
-											<td class="text-left pl-4">
-												<a href="/members/364/" class="transition hover:text-green-500">EnesTe</a>
-											</td>
-											<td class="font-normal py-4">150.00 ₺</td>
-										</tr>
-																			<tr>
-											<td class="text-left pl-4">
-												<a href="/members/364/" class="transition hover:text-green-500">EnesTe</a>
-											</td>
-											<td class="font-normal py-4">65.00 ₺</td>
-										</tr>
-																			<tr>
-											<td class="text-left pl-4">
-												<a href="/members/1926/" class="transition hover:text-green-500">prime61</a>
-											</td>
-											<td class="font-normal py-4">210.00 ₺</td>
-										</tr>
-																			<tr>
-											<td class="text-left pl-4">
-												<a href="/members/2107/" class="transition hover:text-green-500">aydinlik</a>
-											</td>
-											<td class="font-normal py-4">75.00 ₺</td>
-										</tr>
-																			<tr>
-											<td class="text-left pl-4">
-												<a href="/members/1926/" class="transition hover:text-green-500">prime61</a>
-											</td>
-											<td class="font-normal py-4">210.00 ₺</td>
-										</tr>
-																		</tbody>
-								</table>
-							</div>
-						</div>
-													
-								
-									<div>
-						<span class="text-white/75 font-medium text-lg font-bold">Sosyal Medya</span>
-						<div class="mt-3 flex gap-4">
-																													<a href="https://discord.gg/erosnw" class="card !h-10 w-10 flex items-center justify-center hover:bg-[#4d48e5] hover:text-white text-[#4d48e5]">
-									<i class="fab fa-discord"></i>
-								</a>
-																																		</div>
-					</div>
-							</div>
-		</section>
-
-
-    </main>
-
-    <div class="bg-voon-700/50 border-t-2 border-zinc-600/10 py-8 relative z-20">
-	<div class="container mx-auto px-4">
-		<div class="row">
-			<div class="col-md-5 mr-auto mb-5 mb-md-0">
-				<div class="text-sm text-center md:text-left flex flex-col">
-					<h3 class="text-white font-semibold uppercase">
-						Hakkımızda					</h3>
-					<div class="text-white/75 max-w-lg mt-2">
-													Bu yazıyı yönetim paneli üzerinden değiştirebilirsiniz.											</div>
-					<div class="flex gap-2 mt-2 justify-center md:justify-start">
-																															<a href="https://discord.gg/erosnw" class="text-indigo-300/75 transition hover:text-[#4d48e5] p-2 z-10">
-								<i class="fab fa-discord text-lg"></i>
-							</a>
-																							</div>
-				</div>
-			</div>
-			
-							<div class="col-md-2 mb-5 mb-md-0">
-					<div class="text-sm text-center md:text-left flex flex-col">
-						<h3 class="text-white font-semibold uppercase">Hızlı Menü</h3>
-													<ul class="text-white/75 mt-2">
-																	<li class="mb-1.5 hover:text-white">
-										<a href="/" class="widget-link" >
-																							<i class="fas fa-home mr-1"></i>
-																						Anasayfa										</a>
-									</li>
-																	<li class="mb-1.5 hover:text-white">
-										<a href="/store" class="widget-link" >
-																							<i class="fas fa-shopping-cart mr-1"></i>
-																						Mağaza										</a>
-									</li>
-															</ul>
-											</div>
-				</div>
-							<div class="col-md-2 mb-5 mb-md-0">
-					<div class="text-sm text-center md:text-left flex flex-col">
-						<h3 class="text-white font-semibold uppercase">Sosyal Medya</h3>
-													<ul class="text-white/75 mt-2">
-																	<li class="mb-1.5 hover:text-white">
-										<a href="" class="widget-link" target="_blank">
-																							<i class="fab fa-tiktok mr-1"></i>
-																						TikTok										</a>
-									</li>
-																	<li class="mb-1.5 hover:text-white">
-										<a href="https://discord.gg/erosnw" class="widget-link" target="_blank">
-																							<i class="fab fa-discord mr-1"></i>
-																						Discord										</a>
-									</li>
-															</ul>
-											</div>
-				</div>
-							<div class="col-md-2 mb-5 mb-md-0">
-					<div class="text-sm text-center md:text-left flex flex-col">
-						<h3 class="text-white font-semibold uppercase">Bağlantılar</h3>
-													<ul class="text-white/75 mt-2">
-																	<li class="mb-1.5 hover:text-white">
-										<a href="/rules" class="widget-link" >
-																						Kurallar										</a>
-									</li>
-																	<li class="mb-1.5 hover:text-white">
-										<a href="/terms" class="widget-link" >
-																						Hizmet Şartları										</a>
-									</li>
-																	<li class="mb-1.5 hover:text-white">
-										<a href="/privacy" class="widget-link" >
-																						Gizlilik Politikası										</a>
-									</li>
-															</ul>
-											</div>
-				</div>
-					</div>
-		<div class="flex flex-col md:flex-row items-center justify-center md:justify-between border-t border-gray-800/50 mt-4 pt-5">
-			<div class="text-center md:text-left mb-4 md:mb-0">
-				<div class="text-white/75 mt-auto text-sm">
-					<span class="font-medium text-white">erosnw.com</span>. Tüm hakları saklıdır. &copy; 2026				</div>
-				<div class="text-white/75 mt-auto text-xs mt-2">
-					<a href="https://www.leaderos.com.tr" target="_blank" id="powered_by_leaderos">Powered by <strong>LeaderOS</strong></a><script>
-						var is_error;
-						var interval = setInterval(function() {
-							if (is_error) {
-								clearInterval(interval);
-								return false;
-							}
-							
-							var brand_el = document.getElementById("powered_by_leaderos");
-							var is_brand_visible = true;
-							
-							if (brand_el) {
-								var style = window.getComputedStyle(brand_el);
-								if (brand_el.offsetParent === null) {
-									is_brand_visible = false;
-								} else if (style.display === "none") {
-									is_brand_visible = false;
-								} else if (style.visibility === "hidden") {
-									is_brand_visible = false;
-								}
-							} else {
-								is_brand_visible = false;
-							}
-							
-							if (!is_brand_visible) {
-								is_error = true;
-								document.body.innerHTML = "<iframe src='https://www.leaderos.com.tr/powered_by_leaderos.php' style='border: 0; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%'></iframe>";
-							}
-						}, 1000);
-					</script>				</div>
-			</div>
-			<div class="flex gap-2">
-									<div x-cloak class="relative inline-block text-left mb-8 md:mb-0" x-data="{languageMenu: false}">
-						<div>
-							<div @click="languageMenu = ! languageMenu" class="flex text-indigo-200 text-sm border-b-2 py-2 px-3 font-medium cursor-pointer border-indigo-400/50" id="menu-button" aria-expanded="true" aria-haspopup="true">
-								Türkçe								<svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-								</svg>
-							</div>
-						</div>
-						<div x-show="languageMenu" class="origin-bottom-left absolute bottom-14 left-0 mt-2 w-56 rounded-md shadow-lg bg-voon-900 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-							<div class="py-1" role="none">
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=cs">
-										Čeština									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=de">
-										Deutsch									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=en">
-										English									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=es">
-										Español									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=fr">
-										Français									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=hi">
-										हिन्दी									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=hu">
-										Magyar									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=it">
-										Italiano									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=ja">
-										日本語									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=nl">
-										Nederlands									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=no">
-										Norsk									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=pl">
-										Polski									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=pt_BR">
-										Português (Brasil)									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=ro">
-										Română									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=ru">
-										Русский									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=sv">
-										Svenska									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm active hover:bg-voon-700 hover:text-white" href="?lang=tr">
-										Türkçe									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=vi">
-										Tiếng Việt									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm  hover:bg-voon-700 hover:text-white" href="?lang=zh_CN">
-										中文									</a>
-															</div>
-						</div>
-					</div>
-													<div x-cloak class="relative inline-block text-left mb-8 md:mb-0" x-data="{currencyMenu: false}">
-						<div>
-							<div @click="currencyMenu = ! currencyMenu" class="flex text-indigo-200 text-sm border-b-2 py-2 px-3 font-medium cursor-pointer border-indigo-400/50" id="menu-button" aria-expanded="true" aria-haspopup="true">
-								TL								<svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-								</svg>
-							</div>
-						</div>
-						<div x-show="currencyMenu" class="origin-bottom-left absolute bottom-14 left-0 mt-2 w-56 rounded-md shadow-lg bg-voon-900 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-							<div class="py-1" role="none">
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=AUD">
-										AUD									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=BRL">
-										BRL									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=CAD">
-										CAD									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=CNY">
-										CNY									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=CZK">
-										CZK									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=DKK">
-										DKK									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=EUR">
-										EUR									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=GBP">
-										GBP									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=HUF">
-										HUF									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=INR">
-										INR									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=JPY">
-										JPY									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=NOK">
-										NOK									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=NZD">
-										NZD									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=PHP">
-										PHP									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=PLN">
-										PLN									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=RUB">
-										RUB									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=SEK">
-										SEK									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white active" href="?currency=TRY">
-										TL									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=USD">
-										USD									</a>
-																	<a class="text-white/75 block px-4 py-2 text-sm hover:bg-voon-700 hover:text-white " href="?currency=VND">
-										VND									</a>
-															</div>
-						</div>
-					</div>
-							</div>
-		</div>
-	</div>
-</div>
-</div>
-
-<script>
-    var $onlineAPI = "1";
-</script>
-
-<script>
-    var lang = {
-        credits: "%credit% kredi",
-        search: "Ara...",
-        loading: "Yükleniyor...",
-        confirm_delete: "Silmek istediğinizden emin misiniz?",
-        player_not_found: "Oyuncu bulunamadı!",
-        play_again: "Tekrar oyna",
-        spinning: "Çeviriliyor...",
-        apply: "Uygula",
-        remove: "Sil",
-        alert_btn_ok: "OK",
-        alert_btn_cancel: "İptal",
-        alert_btn_confirm: "Onayla",
-        alert_btn_buy_credit: "Kredi Yükle",
-        alert_title_success: "Başarılı!",
-        alert_title_error: "Hata!",
-        alert_title_warning: "Uyarı!",
-        alert_title_you_lost: "Kaybettin!",
-        alert_title_you_win: "Kazandınız!",
-        alert_message_server_address_copied: "Sunucu adresi kopyalandı!",
-        alert_message_something_went_wrong: "Bir şeyler yanlış. Sonra tekrar deneyin.",
-        alert_message_lottery_error_duration: "Tekrar çevirmek için %date%'e kadar beklemeniz gerekiyor.",
-        alert_message_lottery_you_lost: "Üzgünüm, kaybettiniz. Sonra tekrar deneyin.",
-        alert_message_lottery_you_win: "Tebrikler! <strong>%prize%</strong> kazandınız!",
-        alert_message_lottery_you_win_chest: "Ürün sandığınıza eklendi.",
-        alert_message_lottery_you_win_credit: "Mevcut Kredi: %credit%",
-        alert_message_lottery_credit_error: "Oynamak için yeterli krediniz bulunmuyor.",
-        alert_message_chest_confirm: "Onaylamadan önce oyunda olduğunuzdan emin olun, aksi takdirde ürün size ulaşmayabilir!",
-        alert_message_chest_sending: "Teslimat işlemi devam ediyor, lütfen bekleyin ve sayfadan ayrılmayın...",
-        alert_message_chest_sent: "Ürün başarıyla teslim edildi, Hayırlı Olsun!",
-        alert_message_chest_server_error: "Sunucuya bağlanırken bir sorun yaşandı, lütfen daha sonra tekrar deneyin.",
-        alert_message_chest_amount_error: "En fazla %amount% adet teslim alabilirsin!",
-        alert_message_login: "Bu işlemi yapabilmek için giriş yapın.",
-        help_voting_success: "Oy kullanımı başarıyla tamamlandı!",
-        alert_message_checkout_credit_error: "Yeterli krediniz bulunmuyor.",
-        alert_message_checkout_success: "Ödeme işlemi tamamlandı ve ürün sandığınıza eklendi.",
-        alert_message_checkout_quantity_error: "Geçerli bir adet giriniz!",
-        alert_message_checkout_stock_error: "Stok nedeniyle bu üründen daha fazla ekleyemezsin!",
-        alert_message_checkout_stock_error2: "Stokta yeterli ürün yok!",
-        alert_message_checkout_cart_empty_error: "Sepetiniz boş!",
-        alert_message_checkout_coupon_invalid: "Kupon geçersiz!",
-        alert_message_checkout_coupon_invalid_for_cart: "Bu kupon, sepetiniz için uygun değil!",
-        alert_message_checkout_coupon_used: "Bu kuponu daha önceden kullandınız!",
-        alert_message_checkout_coupon_expired: "Bu kuponun süresi bitmiş!",
-        alert_message_checkout_coupon_login: "Kupon kullanmak için giriş yapmanız gerekiyor!",
-        alert_message_checkout_coupon_success: "Kupon başarıyla uygulandı!",
-        alert_message_checkout_coupon_price: "Bu kuponu kullanabilmek için sepetiniz en az %amount% kredi değerinde olmalıdır!",
-        alert_message_not_found: "Not found!",
-        limited_stock: "Sınırlı Stok!",
-        out_of_stock: "Stok Yok!"
+<meta charset="UTF-8">
+<title>CS Style Web Shooter - Demo</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial;
+        background: #111;
+        color: white;
+        text-align: center;
     }
+    #lobby {
+        padding-top: 100px;
+    }
+    canvas {
+        display: none;
+        background: #222;
+        margin: auto;
+        border: 2px solid #555;
+    }
+    button {
+        padding: 12px 25px;
+        font-size: 18px;
+        cursor: pointer;
+        background: #f5a623;
+        border: none;
+        border-radius: 6px;
+    }
+</style>
+</head>
+<body>
+
+<div id="lobby">
+    <h1>CS WEB DEMO</h1>
+    <p>NPC Botlara karşı savaş</p>
+    <button onclick="startGame()">Maça Gir</button>
+</div>
+
+<canvas id="game" width="800" height="500"></canvas>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+let player = { x: 400, y: 250, hp: 100 };
+let bullets = [];
+let bots = [];
+let score = 0;
+let playing = false;
+
+function startGame() {
+    document.getElementById("lobby").style.display = "none";
+    canvas.style.display = "block";
+    playing = true;
+    spawnBots();
+    gameLoop();
+}
+
+function spawnBots() {
+    bots = [];
+    for (let i = 0; i < 5; i++) {
+        bots.push({
+            x: Math.random() * 760 + 20,
+            y: Math.random() * 460 + 20,
+            hp: 50
+        });
+    }
+}
+
+document.addEventListener("mousemove", e => {
+    const rect = canvas.getBoundingClientRect();
+    player.x = e.clientX - rect.left;
+    player.y = e.clientY - rect.top;
+});
+
+document.addEventListener("click", () => {
+    if (!playing) return;
+    bullets.push({ x: player.x, y: player.y });
+});
+
+function update() {
+    bullets.forEach(b => b.y -= 6);
+
+    bots.forEach(bot => {
+        if (bot.x < player.x) bot.x += 1;
+        if (bot.x > player.x) bot.x -= 1;
+        if (bot.y < player.y) bot.y += 1;
+        if (bot.y > player.y) bot.y -= 1;
+
+        if (Math.hypot(bot.x - player.x, bot.y - player.y) < 15) {
+            player.hp -= 0.2;
+        }
+    });
+
+    bullets.forEach(b => {
+        bots.forEach(bot => {
+            if (Math.hypot(bot.x - b.x, bot.y - b.y) < 15) {
+                bot.hp -= 25;
+                b.y = -100;
+                if (bot.hp <= 0) {
+                    score++;
+                    bot.x = Math.random() * 760;
+                    bot.y = Math.random() * 460;
+                    bot.hp = 50;
+                }
+            }
+        });
+    });
+}
+
+function draw() {
+    ctx.clearRect(0,0,800,500);
+
+    // Player
+    ctx.fillStyle = "cyan";
+    ctx.beginPath();
+    ctx.arc(player.x, player.y, 10, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Bots
+    ctx.fillStyle = "red";
+    bots.forEach(bot => {
+        ctx.beginPath();
+        ctx.arc(bot.x, bot.y, 10, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    // Bullets
+    ctx.fillStyle = "yellow";
+    bullets.forEach(b => ctx.fillRect(b.x - 2, b.y, 4, 8));
+
+    // HUD
+    ctx.fillStyle = "white";
+    ctx.fillText("HP: " + Math.floor(player.hp), 10, 20);
+    ctx.fillText("SKOR: " + score, 10, 40);
+
+    if (player.hp <= 0) {
+        playing = false;
+        ctx.fillText("ÖLDÜN - SAYFAYI YENİLE", 330, 250);
+    }
+}
+
+function gameLoop() {
+    if (!playing) return;
+    update();
+    draw();
+    requestAnimationFrame(gameLoop);
+}
 </script>
 
-    <script type="text/javascript" src="https://www.termsfeed.com/public/cookie-consent/4.0.0/cookie-consent.js" charset="UTF-8"></script>
-    <script type="text/javascript" charset="UTF-8">
-        document.addEventListener('DOMContentLoaded', function () {
-            cookieconsent.run({"notice_banner_type": "simple", "consent_type": "express", "palette": "dark", "language": "tr", "page_load_consent_levels": ["strictly-necessary", "functionality", "tracking", "targeting"], "notice_banner_reject_button_hide": true, "preferences_center_close_button_hide": false, "page_refresh_confirmation_buttons": false, "website_name": "erosnw.com", "website_privacy_policy_url": "https://erosnw.com/privacy"});
-        });
-    </script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollup/2.4.1/jquery.scrollUp.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/16.1.0/lazyload.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/i18n/tr.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.Marquee/1.5.0/jquery.marquee.min.js"></script>
-
-<script src="/assets/gale/js/main.min.1767125012.js"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script cookie-consent="targeting" async src="https://www.googletagmanager.com/gtag/js?id="></script>
-    <script cookie-consent="targeting">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag("js", new Date());
-
-        gtag("config", "");
-    </script>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js"></script>
-
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaECcijrCfZBuqDzBWp3qSrBEZCqBUfQVz4CWGHWF91iaEw==" data-cf-beacon='{"version":"2024.11.0","token":"03b30f5ab7794219bb895eb6d24d92b7","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
