@@ -2,53 +2,44 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>V-CSGO WEB FPS</title>
+<title>CSGO-STYLE WEB FPS</title>
 <style>
-html,body{margin:0;padding:0;overflow:hidden;background:#000;color:#0f0;font-family:Arial}
-#lobby,#hud{position:fixed;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-#hud{pointer-events:none;justify-content:space-between;padding:10px;display:none}
-.panel{background:#111;padding:20px;border:1px solid #0f0}
-button{background:#0f0;color:#000;border:none;padding:10px;margin:5px;cursor:pointer}
+html,body{margin:0;padding:0;overflow:hidden;background:#000;font-family:Arial}
+#ui{position:fixed;top:0;left:0;width:100%;padding:10px;color:#0f0;display:flex;justify-content:space-between;pointer-events:none}
+#lobby{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
+.panel{background:#111;border:1px solid #0f0;padding:20px;color:#0f0;text-align:center}
+button{pointer-events:auto;background:#0f0;color:#000;border:none;padding:10px 20px;cursor:pointer}
 </style>
 </head>
 <body>
 
 <div id="lobby">
   <div class="panel">
-    <h2>V-CSGO LOBBY</h2>
-    <button onclick="startGame()">PLAY</button>
-    <div>COIN: <span id="coinTxt">0</span></div>
+    <h2>CSGO STYLE LOBBY</h2>
+    <p>BOT + FPS + MAP</p>
+    <button onclick="start()">PLAY</button>
   </div>
 </div>
 
-<div id="hud">
+<div id="ui">
   <div>HP: <span id="hp">100</span></div>
-  <div>WEAPON: <span id="wpn">AK</span></div>
-  <div>COIN: <span id="coinHud">0</span></div>
+  <div>SILAH: <span id="wpn">AK</span></div>
+  <div>SKOR: <span id="score">0</span></div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 <script>
 let scene,camera,renderer;
-let player,bullets=[],bots=[];
-let hp=100,coins=+localStorage.coin||0;
-let weapon="AK";
-document.getElementById("coinTxt").innerText=coins;
+let player,velocity={x:0,z:0};
+let bullets=[],bots=[];
+let hp=100,score=0,weapon="AK";
+const keys={};
 
-function dailyReward(){
- let d=new Date().toDateString();
- if(localStorage.last!==d){
-  coins+=100;
-  localStorage.coin=coins;
-  localStorage.last=d;
- }
-}
-dailyReward();
+document.addEventListener("keydown",e=>keys[e.key.toLowerCase()]=true);
+document.addEventListener("keyup",e=>keys[e.key.toLowerCase()]=false);
 
-function startGame(){
+function start(){
  document.getElementById("lobby").style.display="none";
- document.getElementById("hud").style.display="flex";
- document.getElementById("coinHud").innerText=coins;
  init();
  animate();
 }
@@ -56,89 +47,113 @@ function startGame(){
 function init(){
  scene=new THREE.Scene();
  camera=new THREE.PerspectiveCamera(75,innerWidth/innerHeight,0.1,1000);
- renderer=new THREE.WebGLRenderer();
+ renderer=new THREE.WebGLRenderer({antialias:true});
  renderer.setSize(innerWidth,innerHeight);
  document.body.appendChild(renderer.domElement);
 
- let light=new THREE.DirectionalLight(0xffffff,1);
- light.position.set(0,10,0);
- scene.add(light);
+ scene.add(new THREE.HemisphereLight(0xffffff,0x444444,1));
 
- let floor=new THREE.Mesh(
-  new THREE.BoxGeometry(100,1,100),
-  new THREE.MeshStandardMaterial({color:0x333333})
+ const floor=new THREE.Mesh(
+  new THREE.PlaneGeometry(200,200),
+  new THREE.MeshStandardMaterial({color:0x2a2a2a})
  );
+ floor.rotation.x=-Math.PI/2;
  scene.add(floor);
 
- player=new THREE.Mesh(
-  new THREE.BoxGeometry(1,2,1),
-  new THREE.MeshStandardMaterial({color:0x00ff00})
- );
- player.position.y=1;
+ for(let i=0;i<20;i++){
+  const wall=new THREE.Mesh(
+   new THREE.BoxGeometry(5,5,1),
+   new THREE.MeshStandardMaterial({color:0x555555})
+  );
+  wall.position.set(Math.random()*100-50,2.5,Math.random()*100-50);
+  scene.add(wall);
+ }
+
+ player=new THREE.Object3D();
+ player.position.y=1.6;
  scene.add(player);
+ camera.position.set(0,0,0);
+ player.add(camera);
 
- camera.position.set(0,2,5);
+ for(let i=0;i<6;i++)spawnBot();
 
- for(let i=0;i<5;i++)spawnBot();
+ document.body.requestPointerLock();
+ document.addEventListener("mousemove",mouseMove);
+ document.addEventListener("click",shoot);
+}
+
+let yaw=0,pitch=0;
+function mouseMove(e){
+ yaw-=e.movementX*0.002;
+ pitch-=e.movementY*0.002;
+ pitch=Math.max(-1.5,Math.min(1.5,pitch));
+ player.rotation.y=yaw;
+ camera.rotation.x=pitch;
+}
+
+function shoot(){
+ const geo=new THREE.SphereGeometry(0.05);
+ const mat=new THREE.MeshBasicMaterial({color:0xffff00});
+ const b=new THREE.Mesh(geo,mat);
+ b.position.copy(player.position);
+ b.dir=new THREE.Vector3(0,0,-1).applyQuaternion(camera.quaternion);
+ scene.add(b);
+ bullets.push(b);
 }
 
 function spawnBot(){
- let b=new THREE.Mesh(
+ const b=new THREE.Mesh(
   new THREE.BoxGeometry(1,2,1),
   new THREE.MeshStandardMaterial({color:0xff0000})
  );
- b.position.set(Math.random()*20-10,1,Math.random()*20-10);
- b.hp=50;
+ b.position.set(Math.random()*80-40,1,Math.random()*80-40);
+ b.hp=100;
  scene.add(b);
  bots.push(b);
 }
 
-window.addEventListener("keydown",e=>{
- if(e.key==="1")weapon="AK";
- if(e.key==="2")weapon="AWP";
-});
-
-window.addEventListener("click",()=>{
- let geo=new THREE.SphereGeometry(0.1);
- let mat=new THREE.MeshBasicMaterial({color:0xffff00});
- let bullet=new THREE.Mesh(geo,mat);
- bullet.position.copy(player.position);
- bullet.dir=new THREE.Vector3(0,0,-1).applyQuaternion(camera.quaternion);
- scene.add(bullet);
- bullets.push(bullet);
-});
+function updatePlayer(){
+ const speed=0.15;
+ if(keys["w"])velocity.z=-speed;
+ if(keys["s"])velocity.z=speed;
+ if(keys["a"])velocity.x=-speed;
+ if(keys["d"])velocity.x=speed;
+ player.translateX(velocity.x);
+ player.translateZ(velocity.z);
+ velocity.x*=0.8;
+ velocity.z*=0.8;
+}
 
 function animate(){
  requestAnimationFrame(animate);
+ updatePlayer();
 
- bots.forEach(b=>{
-  b.lookAt(player.position);
-  b.position.add(b.getWorldDirection(new THREE.Vector3()).multiplyScalar(0.02));
-  if(b.position.distanceTo(player.position)<1){
-   hp-=0.1;
-   document.getElementById("hp").innerText=Math.floor(hp);
-  }
- });
-
- bullets.forEach((bu,i)=>{
-  bu.position.add(bu.dir.multiplyScalar(0.5));
-  bots.forEach((bo,bi)=>{
-   if(bu.position.distanceTo(bo.position)<1){
-    bo.hp-=weapon==="AWP"?100:25;
-    scene.remove(bu);bullets.splice(i,1);
-    if(bo.hp<=0){
-     scene.remove(bo);bots.splice(bi,1);
-     coins+=10;localStorage.coin=coins;
-     document.getElementById("coinHud").innerText=coins;
+ bullets.forEach((b,i)=>{
+  b.position.add(b.dir.clone().multiplyScalar(0.8));
+  bots.forEach((bot,bi)=>{
+   if(b.position.distanceTo(bot.position)<1){
+    bot.hp-=weapon==="AK"?25:80;
+    scene.remove(b);bullets.splice(i,1);
+    if(bot.hp<=0){
+     scene.remove(bot);bots.splice(bi,1);
+     score++;document.getElementById("score").innerText=score;
      spawnBot();
     }
    }
   });
  });
 
+ bots.forEach(bot=>{
+  bot.lookAt(player.position);
+  bot.position.add(bot.getWorldDirection(new THREE.Vector3()).multiplyScalar(0.03));
+  if(bot.position.distanceTo(player.position)<1.5){
+   hp-=0.3;
+   document.getElementById("hp").innerText=Math.floor(hp);
+  }
+ });
+
  renderer.render(scene,camera);
 }
-
 </script>
 </body>
 </html>
