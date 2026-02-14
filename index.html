@@ -1,96 +1,137 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brutal Network - Sezon 3 - BoxMining</title>
+<title>Brutal Network - Sezon 5 | BoxPvP</title>
 
 <link rel="icon" type="image/png" href="logo/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-/* ==== SENİN CSS'İN (SADECE İSİM VE FORM EKLENDİ) ==== */
-:root{
---primary:#3b82f6;--dark-bg:#0f172a;--darker-bg:#020617;
---text:#e2e8f0;--card-bg:#1e293b
+/* === CSS AYNEN KORUNDU === */
+:root {
+--primary:#3b82f6;--primary-glow:#60a5fa;--dark-bg:#0f172a;
+--darker-bg:#020617;--text:#e2e8f0;--glass:rgba(15,23,42,.8);
+--border:1px solid rgba(59,130,246,.3);--card-bg:#1e293b
 }
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
-body{background:var(--dark-bg);color:var(--text)}
-section{min-height:100vh;padding:100px 5%;display:flex;flex-direction:column;align-items:center;justify-content:center}
-header{position:fixed;top:0;width:100%;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;background:#020617e6;z-index:1000}
-.brand-name{font-size:1.8rem;font-weight:800;color:white}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif;scroll-behavior:smooth}
+body{background:var(--dark-bg);color:var(--text);overflow-x:hidden}
+.bg-gradient{position:fixed;inset:0;z-index:-1;
+background:radial-gradient(circle at 15% 50%,rgba(59,130,246,.08),transparent 25%),
+radial-gradient(circle at 85% 30%,rgba(37,99,235,.08),transparent 25%)}
+
+/* HEADER */
+header{position:fixed;top:0;width:100%;padding:20px 5%;display:flex;
+justify-content:space-between;align-items:center;z-index:1000;
+background:rgba(2,6,23,.8);backdrop-filter:blur(12px);border-bottom:var(--border)}
+.logo-area{display:flex;align-items:center;gap:15px}
+.logo-img{height:50px;animation:float 3s infinite}
+.brand-name{font-size:1.8rem;font-weight:800;color:#fff}
 .brand-name span{color:var(--primary)}
-.ip-box{cursor:pointer}
-.sidebar{position:fixed;right:-100%;top:0;width:320px;height:100%;background:#020617;padding:80px 40px;transition:.4s;z-index:2000}
+.menu-btn{font-size:1.8rem;color:white;cursor:pointer}
+
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;right:-100%;width:320px;height:100vh;
+background:rgba(11,15,30,.98);border-left:2px solid var(--primary);
+z-index:2000;padding:80px 40px;display:flex;flex-direction:column;gap:30px;
+transition:.5s}
 .sidebar.active{right:0}
-.sidebar a{color:#cbd5e1;text-decoration:none;font-size:1.2rem;margin-bottom:15px;display:block}
-.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#0009;opacity:0;pointer-events:none}
+.sidebar a{color:#cbd5e1;text-decoration:none;font-size:1.2rem;
+display:flex;gap:15px;padding:10px;border-radius:8px}
+.sidebar a:hover{background:rgba(59,130,246,.1);color:var(--primary)}
+.close-btn{position:absolute;top:25px;right:25px;font-size:2rem}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);
+z-index:1999;opacity:0;pointer-events:none}
 .overlay.active{opacity:1;pointer-events:all}
 
-/* ==== YETKİLİ FORM ==== */
-#staff form{
-max-width:800px;background:#1e293b;padding:40px;border-radius:20px;width:100%
-}
-#staff input,#staff textarea{
-width:100%;padding:12px;margin-bottom:12px;border:none;border-radius:8px
-}
-#staff button{
-width:100%;padding:14px;background:#10b981;border:none;color:white;
-font-weight:800;border-radius:8px;cursor:pointer
-}
+/* SECTIONS */
+section{min-height:100vh;padding:100px 5%;display:flex;
+flex-direction:column;justify-content:center;align-items:center}
+.reveal{opacity:0;transform:translateY(50px);transition:1s}
+.reveal.active{opacity:1;transform:none}
+@keyframes float{50%{transform:translateY(-15px)}}
+
+/* HERO */
+#home{background:linear-gradient(rgba(15,23,42,.7),var(--dark-bg)),
+url('/resimler/bg-hero.jpg') center/cover fixed;text-align:center}
+.hero-title{font-size:4.5rem}
+.hero-title span{background:linear-gradient(to right,#60a5fa,#3b82f6);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ip-box{background:rgba(255,255,255,.05);padding:20px 40px;
+border-radius:15px;cursor:pointer;margin:30px 0}
+
+/* RULES + STAFF */
+.rules-container{width:100%;max-width:1000px;background:#1e293b;
+border-radius:20px;padding:40px}
+
+/* TOAST */
+#toast{visibility:hidden;position:fixed;left:50%;bottom:30px;
+transform:translateX(-50%);background:#020617;color:white;
+padding:15px 30px;border-radius:10px;border:1px solid var(--primary)}
+#toast.show{visibility:visible}
 </style>
 </head>
 
 <body>
+<div class="bg-gradient"></div>
 
 <header>
-  <div class="brand-name">BRUTAL <span>NETWORK</span></div>
-  <i class="fas fa-bars" onclick="toggleMenu()"></i>
+<div class="logo-area">
+<img src="/logo/logo.png" class="logo-img">
+<div class="brand-name">BRUTAL<span>NETWORK</span></div>
+</div>
+<div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </header>
 
 <div class="overlay" onclick="toggleMenu()"></div>
+
 <div class="sidebar" id="sidebar">
+<div class="close-btn" onclick="toggleMenu()">&times;</div>
 <a href="#home" onclick="toggleMenu()">Anasayfa</a>
+<a href="#features" onclick="toggleMenu()">Neden Biz?</a>
+<a href="#games" onclick="toggleMenu()">Oyunlar</a>
+<a href="#store" onclick="toggleMenu()">Mağaza</a>
 <a href="#staff" onclick="toggleMenu()">Yetkili Başvuru</a>
 <a href="#rules" onclick="toggleMenu()">Kurallar</a>
 </div>
 
 <section id="home">
-<h1 style="font-size:4rem">BRUTAL <span style="color:#3b82f6">NETWORK</span></h1>
-<p>Türkiye'nin En Gelişmiş BoxPvP Deneyimi</p>
-
+<div class="reveal">
+<h1 class="hero-title">SINIRLARI ZORLA<br><span>BRUTAL NETWORK</span></h1>
 <div class="ip-box" onclick="copyIP()">
-  <div style="font-size:1.5rem;font-weight:800">193.164.4.95</div>
-  <div style="color:#94a3b8">Tıkla ve Kopyala</div>
+<div class="ip-text">193.164.4.95</div>
+<div class="ip-sub">Tıkla ve Kopyala</div>
+</div>
 </div>
 </section>
 
-<!-- ================= YETKİLİ BAŞVURU ================= -->
+<!-- YETKİLİ BAŞVURU -->
 <section id="staff">
-<h2 style="font-size:3rem;margin-bottom:30px">Yetkili Başvuru</h2>
+<div class="section-header reveal">
+<h2>Yetkili Başvuru</h2>
+<p>Brutal Network ekibine katıl</p>
+</div>
 
+<div class="rules-container reveal">
 <form id="staffForm">
-<h3 style="text-align:center;margin-bottom:20px">ʏᴇᴛᴋɪʟɪ ᴀʟıᴍ ꜰᴏʀᴍᴜ!</h3>
-
-<input name="yas" placeholder="ʏᴀꜱıɴıᴢ" required>
-<input name="isim" placeholder="ɪꜱᴍɪɴɪᴢ" required>
-<input name="ign" placeholder="ᴏʏᴜɴ ɪᴄɪ ɪꜱᴍɪɴɪᴢ" required>
-
-<textarea name="spam" placeholder="ꜱᴏʜʙᴇᴛᴛᴇ ʙɪʀɪꜱɪ 𝟧 ᴋᴇʀᴇ ꜱᴘᴀᴍ ᴀᴛᴛı ɴᴀᴘᴀʀꜱıɴ" required></textarea>
-<textarea name="kufur" placeholder="ᴀɢıʀ ᴋᴜꜰᴜʀ ᴇᴅɪʏᴏʀ ᴀᴍᴀ ꜱᴇɴᴅᴇɴ ᴜꜱᴛᴜɴ ʏᴇᴛᴋɪʟɪ ᴠᴀʀ ɴᴀᴘᴀʀꜱıɴ" required></textarea>
-<textarea name="alay" placeholder="ᴋᴜʀᴜᴄᴜʏᴀ / ɢᴇʟɪꜱᴛɪʀɪᴄɪʏᴇ ᴀʟᴀʏ ᴇᴅɪʏᴏʀ ɴᴀᴘᴀʀꜱıɴ" required></textarea>
-<textarea name="neden" placeholder="ɴᴇᴅᴇɴ ʙɪᴢɪ ᴛᴇʀᴄɪʜ ᴇᴅɪʏᴏʀꜱᴜɴᴜᴢ" required></textarea>
-
+<input name="isim" placeholder="İsmin" required><br><br>
+<input name="yas" placeholder="Yaşın" required><br><br>
+<input name="ign" placeholder="Minecraft Nick" required><br><br>
+<textarea name="neden" placeholder="Neden yetkili olmak istiyorsun?" required></textarea><br><br>
 <button type="submit">Başvuruyu Gönder</button>
 </form>
+</div>
 </section>
 
 <section id="rules">
 <h2>Kurallar & Yasal</h2>
-<p>Brutal Network kuralları geçerlidir.</p>
 </section>
+
+<footer>
+<p>&copy; 2026 Brutal Network</p>
+</footer>
 
 <div id="toast">IP Kopyalandı: 193.164.4.95</div>
 
@@ -102,37 +143,40 @@ document.querySelector(".overlay").classList.toggle("active");
 
 function copyIP(){
 navigator.clipboard.writeText("193.164.4.95");
-const t=document.getElementById("toast");
-t.className="show";
-setTimeout(()=>t.className="",3000);
+let t=document.getElementById("toast");
+t.className="show";setTimeout(()=>t.className="",3000);
 }
 
+// Reveal
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".reveal").forEach(r=>{
+if(r.getBoundingClientRect().top<window.innerHeight-100)
+r.classList.add("active");
+});
+});
+
+// WEBHOOK
 document.getElementById("staffForm").addEventListener("submit",e=>{
 e.preventDefault();
-const f=e.target;
-fetch("https://discord.com/api/webhooks/1470016706700115969/DKAKUgN_88Kvu5f45qH2jjmW74c7blBB8KB4F874Q94-2aAmS9v-9fscdL02Z1bg64eu",{
+let f=e.target;
+fetch("WEBHOOK_URL_BURAYA",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({
 embeds:[{
-title:"🛡️ Yeni Yetkili Başvurusu | Brutal Network",
+title:"Yeni Yetkili Başvurusu | Brutal Network",
 color:3447003,
 fields:[
-{name:"Yaş",value:f.yas.value,inline:true},
 {name:"İsim",value:f.isim.value,inline:true},
+{name:"Yaş",value:f.yas.value,inline:true},
 {name:"IGN",value:f.ign.value,inline:true},
-{name:"Spam",value:f.spam.value},
-{name:"Küfür",value:f.kufur.value},
-{name:"Alay",value:f.alay.value},
-{name:"Neden?",value:f.neden.value}
-]
-}]
+{name:"Neden",value:f.neden.value}
+]}]
 })
 });
 alert("Başvurun gönderildi!");
 f.reset();
 });
 </script>
-
 </body>
 </html>
