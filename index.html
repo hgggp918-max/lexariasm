@@ -1,159 +1,689 @@
+
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrutalNetwork - Sezon 5 | BoxPvP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brutal Network -  | BoxPvP</title>
+    
+    <link rel="icon" type="image/png" href="logo/logo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- GENEL AYARLAR --- */
+        :root {
+            --primary: #3b82f6;
+            --primary-glow: #60a5fa;
+            --dark-bg: #0f172a;
+            --darker-bg: #020617;
+            --text: #e2e8f0;
+            --glass: rgba(15, 23, 42, 0.8);
+            --border: 1px solid rgba(59, 130, 246, 0.3);
+            --card-bg: #1e293b;
+        }
 
-<link rel="icon" type="image/png" href="logo/logo.png">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
 
-<!-- STYLE BLOĞUN SENİNLE AYNI – DOKUNULMADI -->
-<style>
-/* --- GENEL AYARLAR --- */
-:root {
---primary:#3b82f6;
---primary-glow:#60a5fa;
---dark-bg:#0f172a;
---darker-bg:#020617;
---text:#e2e8f0;
---glass:rgba(15,23,42,.8);
---border:1px solid rgba(59,130,246,.3);
---card-bg:#1e293b;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif;scroll-behavior:smooth}
-body{background-color:var(--dark-bg);color:var(--text);overflow-x:hidden}
-/* … (BURADA SENİN TÜM CSS’İN AYNI ŞEKİLDE DEVAM EDİYOR, KESİLMEDİ) … */
-</style>
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* --- ARKA PLAN EFEKTLERİ --- */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(37, 99, 235, 0.08) 0%, transparent 25%);
+        }
+
+        /* --- NAVBAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: var(--border);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 50px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .brand-name span { color: var(--primary); }
+
+        .menu-btn {
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .menu-btn:hover { color: var(--primary); transform: scale(1.1); }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: rgba(11, 15, 30, 0.98);
+            border-left: 2px solid var(--primary);
+            z-index: 2000;
+            padding: 80px 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            box-shadow: -20px 0 50px rgba(0,0,0,0.8);
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: 0.3s;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .sidebar a:hover {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            transform: translateX(10px);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1999;
+            opacity: 0; pointer-events: none;
+            transition: 0.4s;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+
+        /* --- SECTIONS --- */
+        section {
+            min-height: 100vh;
+            padding: 100px 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px var(--primary); }
+            50% { box-shadow: 0 0 20px var(--primary), 0 0 40px var(--primary); }
+            100% { box-shadow: 0 0 5px var(--primary); }
+        }
+
+        /* --- HERO --- */
+        #home {
+            background: linear-gradient(rgba(15, 23, 42, 0.7), var(--dark-bg)), url('/resimler/bg-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        .hero-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid var(--primary);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .hero-title span {
+            background: linear-gradient(to right, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ip-box {
+            background: rgba(255,255,255,0.05);
+            padding: 20px 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            margin: 30px 0;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ip-box:hover {
+            transform: scale(1.05);
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--primary);
+        }
+
+        .ip-text { font-size: 1.5rem; font-weight: bold; color: white; letter-spacing: 1px; }
+        .ip-sub { color: #94a3b8; font-size: 0.9rem; margin-top: 5px; }
+
+        /* --- FEATURES --- */
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 15px; }
+        .section-header p { color: #94a3b8; font-size: 1.2rem; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            animation: float 4s infinite ease-in-out;
+        }
+
+        /* --- GAMES --- */
+        #games { background: #0b1120; }
+        .game-card-container { display: flex; flex-wrap: wrap; gap: 50px; justify-content: center; width: 100%; }
+        .game-card {
+            width: 400px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: 0.4s;
+        }
+        .game-card:hover { transform: scale(1.03); border-color: var(--primary); }
+        .game-img {
+            height: 220px;
+            background: var(--card-bg);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4rem; color: rgba(255,255,255,0.1);
+        }
+        .game-img img { width: 100%; height: 100%; object-fit: cover; }
+        .game-info { padding: 30px; }
+        .game-info h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .game-status {
+            display: inline-block; padding: 5px 12px; border-radius: 5px;
+            font-size: 0.8rem; font-weight: bold; margin-bottom: 15px;
+        }
+        .status-active { background: rgba(74, 222, 128, 0.2); color: #4ade80; }
+        .status-soon { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+
+        /* --- STORE (GELİŞMİŞ) --- */
+        #store { background: radial-gradient(circle at center, #172033 0%, #020617 100%); }
+        
+        .promo-banner {
+            width: 100%; max-width: 900px;
+            background: linear-gradient(90deg, #b91c1c, #ef4444);
+            color: white; padding: 20px; border-radius: 12px;
+            text-align: center; font-size: 1.5rem; font-weight: 800;
+            margin-bottom: 50px; animation: pulse-glow 2s infinite;
+            transform: skewX(-10deg);
+        }
+        .promo-banner div { transform: skewX(10deg); }
+
+        .store-categories {
+            display: flex; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; justify-content: center;
+        }
+        .cat-btn {
+            background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+            color: #cbd5e1; padding: 10px 25px; border-radius: 30px; cursor: pointer; transition: 0.3s;
+        }
+        .cat-btn.active, .cat-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .products-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; width: 100%; max-width: 1200px;
+        }
+        
+        .product-card {
+            background: var(--card-bg); border-radius: 15px; padding: 25px; text-align: center;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; position: relative; overflow: hidden;
+        }
+        .product-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        
+        .prod-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        .prod-title { font-size: 1.4rem; font-weight: bold; margin-bottom: 10px; }
+        .prod-desc { color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px; min-height: 40px; }
+        .prod-price { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 15px; }
+        .prod-price span { font-size: 1rem; color: #94a3b8; text-decoration: line-through; margin-right: 5px; }
+        
+        .buy-btn {
+            display: block; width: 100%; padding: 12px; background: var(--primary);
+            color: white; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s;
+        }
+        .buy-btn:hover { background: #2563eb; }
+
+        /* --- RULES (YENİ BÖLÜM) --- */
+        #rules { background: #0f172a; }
+        .rules-container {
+            width: 100%; max-width: 1000px; background: #1e293b;
+            border-radius: 20px; padding: 40px; border: 1px solid rgba(255,255,255,0.05);
+        }
+        .rule-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding: 20px 0; display: flex; gap: 20px; align-items: flex-start;
+        }
+        .rule-item:last-child { border-bottom: none; }
+        .rule-num {
+            background: rgba(59, 130, 246, 0.1); color: var(--primary);
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-weight: bold; flex-shrink: 0;
+        }
+        .rule-content h4 { font-size: 1.2rem; color: white; margin-bottom: 5px; }
+        .rule-content p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000; padding: 50px 5%; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;
+        }
+        .footer-logo { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 20px; display: inline-block; }
+        .footer-logo span { color: var(--primary); }
+        .dev-credit { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #64748b; }
+        .dev-name { color: var(--primary); font-weight: bold; font-family: monospace; font-size: 1rem; }
+
+        /* --- TOAST --- */
+        #toast {
+            visibility: hidden; background: var(--dark-bg); border: 1px solid var(--primary);
+            color: #fff; text-align: center; border-radius: 10px; padding: 16px 30px;
+            position: fixed; z-index: 3000; left: 50%; bottom: 30px; transform: translateX(-50%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        /* Mobil Uyum */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3rem; }
+            .sidebar { width: 85%; }
+            section { padding: 80px 20px; }
+            .promo-banner { font-size: 1.1rem; }
+        }
+    </style>
 </head>
-
 <body>
-<div class="bg-gradient"></div>
 
-<header>
-<div class="logo-area">
-<img src="/logo/logo.png" class="logo-img">
-<div class="brand-name">BRUTAL<span>NETWORK</span></div>
-</div>
-<div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars-staggered"></i></div>
-</header>
+    <div class="bg-gradient"></div>
 
-<div class="overlay" onclick="toggleMenu()"></div>
-<div class="sidebar" id="sidebar">
-<div class="close-btn" onclick="toggleMenu()">&times;</div>
+    <header>
+        <div class="logo-area">
+            <img src="/logo/logo.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+            <div class="brand-name">Brutal<span>Network</span></div>
+        </div>
+        <div class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars-staggered"></i>
+        </div>
+    </header>
 
-<h2 style="color:white;text-align:center;">MENÜ</h2>
+    <div class="overlay" onclick="toggleMenu()"></div>
+    <div class="sidebar" id="sidebar">
+        <div class="close-btn" onclick="toggleMenu()">&times;</div>
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+            <h2 style="color:white;">MENÜ</h2>
+        </div>
 
-<a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Anasayfa</a>
-<a href="#features" onclick="toggleMenu()"><i class="fas fa-star"></i> Neden Biz?</a>
-<a href="#games" onclick="toggleMenu()"><i class="fas fa-gamepad"></i> Oyunlar</a>
-<a href="#store" onclick="toggleMenu()"><i class="fas fa-shopping-cart"></i> Mağaza</a>
-<a href="#yetkili" onclick="toggleMenu()"><i class="fas fa-user-shield"></i> Yetkili Alım</a>
-<a href="#rules" onclick="toggleMenu()"><i class="fas fa-book"></i> Kurallar</a>
+        <a href="#home" onclick="toggleMenu()"><i class="fas fa-home"></i> Anasayfa</a>
+        <a href="#features" onclick="toggleMenu()"><i class="fas fa-star"></i> Neden Biz?</a>
+        <a href="#games" onclick="toggleMenu()"><i class="fas fa-gamepad"></i> Oyunlar</a>
+        <a href="#store" onclick="toggleMenu()"><i class="fas fa-shopping-cart"></i> Mağaza</a>
+        <a href="#rules" onclick="toggleMenu()"><i class="fas fa-book"></i> Kurallar & Yasal</a>
+        <a href="#footer" onclick="toggleMenu()"><i class="fas fa-info-circle"></i> İletişim</a>
+        
+        <div style="margin-top: auto;">
+            <a href="https://discord.gg/ERpmcSTU/" target="_blank" style="background: #5865F2; color: white; justify-content: center; margin-bottom: 10px;">
+                <i class="fab fa-discord"></i> Discord
+            </a>
+            <p style="text-align: center; color: #64748b; font-size: 0.8rem;">Endra Craft Sezon 5</p>
+        </div>
+    </div>
 
-<p style="text-align:center;color:#64748b;font-size:.8rem;">BrutalNetwork Sezon 5</p>
-</div>
+    <section id="home">
+        <div class="reveal">
+            <div class="hero-badge">Sezon 5 Şimdi Aktif!</div>
+            <h1 class="hero-title">SINIRLARI ZORLA<br><span>ENDRA CRAFT</span></h1>
+            <p style="color: #cbd5e1; font-size: 1.2rem; margin-bottom: 30px;">Türkiye'nin En Gelişmiş BoxPvP Deneyimi</p>
+            
+            <div class="ip-box" onclick="copyIP()">
+                <div class="ip-text">193.164.4.95</div>
+                <div class="ip-sub"> | Tıkla ve Kopyala</div>
+                <i class="fas fa-copy" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: rgba(255,255,255,0.2); font-size: 2rem;"></i>
+            </div>
+            
+            <div style="margin-top: 30px;">
+                <i class="fas fa-chevron-down" style="color: var(--primary); font-size: 2rem; animation: float 2s infinite;"></i>
+            </div>
+        </div>
+    </section>
 
-<section id="home">
-<div class="reveal">
-<div class="hero-badge">Sezon 5 Şimdi Aktif!</div>
-<h1 class="hero-title">SINIRLARI ZORLA<br><span>BRUTALNETWORK</span></h1>
-<p style="color:#cbd5e1;font-size:1.2rem;">Türkiye'nin En Gelişmiş BoxPvP Deneyimi</p>
-</div>
+    <section id="features">
+        <div class="section-header reveal">
+            <h2>Neden Brutal Network?</h2>
+            <p>Sizi diğerlerinden ayıran özelliklerimizi keşfedin.</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card reveal">
+                <i class="fas fa-bolt feature-icon"></i>
+                <h3>Düşük Gecikme</h3>
+                <p style="color: #94a3b8;">Güçlü sunucu altyapımız sayesinde lag olmadan PvP keyfini yaşayın.</p>
+            </div>
+            <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                <i class="fas fa-shield-alt feature-icon"></i>
+                <h3>Korumalı Sistem</h3>
+                <p style="color: #94a3b8;">Hile koruması ve DDoS saldırılarına karşı %99.9 uptime garantisi.</p>
+            </div>
+            <div class="feature-card reveal" style="transition-delay: 0.4s;">
+                <i class="fas fa-gem feature-icon"></i>
+                <h3>P2W Karşıtı</h3>
+                <p style="color: #94a3b8;">Emek veren kazanır. Dengeli ekonomi sistemi ile adaletli oyun.</p>
+            </div>
+        </div>
+    </section>
+
+  <section id="games">
+    <div class="section-header reveal">
+        <h2>Oyun Modları</h2>
+        <p>Eğlencenin doruklarına ulaşın.</p>
+    </div>
+
+    <div class="game-card-container">
+        <!-- BoxMiming -->
+        <div class="game-card reveal">
+            <div class="game-img">
+                <img src="/resimler/boxpvp.jpg" alt="BoxPvP" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-cubes\'></i>'">
+            </div>
+            <div class="game-info">
+                <span class="game-status status-active">AKTİF</span>
+                <h3>BoxPvP</h3>
+                <p style="color: #94a3b8; margin-bottom: 20px;">Dar alanda amansız mücadele. Kitini geliştir, arenaya hükmet.</p>
+                <button class="store-btn" style="background: #10b981; color: white; cursor: pointer; padding: 10px 20px; font-size: 0.9rem; border: none; border-radius: 5px;">Markete git</button>
+            </div>
+        </div>
+
+      
+    <section id="store">
+    <div class="reveal" style="text-align: center; width: 100%;">
+        <h2 style="font-size: 3rem; margin-bottom: 30px;">Mağaza</h2>
+
+        <div style="display: flex; justify-content: center;">
+            <div class="promo-banner">
+                <div>SEZON 5 AÇILIŞINA ÖZEL %50 İNDİRİM!</div>
+            </div>
+        </div>
+
+        <!-- Kategori Butonları -->
+        <div class="store-categories">
+            <button class="cat-btn active" data-category="vip">VIP Rütbeleri</button>
+            <button class="cat-btn" data-category="keys">Kasa Anahtarları</button>
+            <button class="cat-btn" data-category="coins">Oyun Parası</button>
+        </div>
+
+        <!-- Ürünler -->
+        <div class="products-grid" style="margin: 0 auto;"></div>
+    </div>
 </section>
-
-<section id="features">
-<div class="section-header reveal">
-<h2>Neden BrutalNetwork?</h2>
-<p>Sizi diğerlerinden ayıran özelliklerimizi keşfedin.</p>
-</div>
-</section>
-
-<!-- ================= YETKİLİ ALIM FORMU ================= -->
-<section id="yetkili">
-<div class="section-header reveal">
-<h2>ʏᴇᴛᴋɪʟɪ ᴀʟıᴍ ꜰᴏʀᴍᴜ!</h2>
-<p>BrutalNetwork Yetkili Başvurusu</p>
-</div>
-
-<div class="rules-container reveal">
-<form>
-<div class="rule-item">
-<div class="rule-num">1</div>
-<div class="rule-content">
-<h4>ʏᴀꜱıɴıᴢ:</h4>
-<input type="number" required style="width:100%;padding:10px;border-radius:6px;border:none;">
-</div>
-</div>
-
-<div class="rule-item">
-<div class="rule-num">2</div>
-<div class="rule-content">
-<h4>ɪꜱᴍɪɴɪᴢ:</h4>
-<input type="text" required style="width:100%;padding:10px;border-radius:6px;border:none;">
-</div>
-</div>
-
-<div class="rule-item">
-<div class="rule-num">3</div>
-<div class="rule-content">
-<h4>ᴏʏᴜɴ ɪᴄɪ ɪꜱᴍɪɴɪᴢ:</h4>
-<input type="text" required style="width:100%;padding:10px;border-radius:6px;border:none;">
-</div>
-</div>
-
-<div class="rule-item">
-<div class="rule-num">4</div>
-<div class="rule-content">
-<h4>ꜱᴏʜʙᴇᴛᴛᴇ ʙɪʀɪꜱɪ 𝟧 ᴋᴇʀᴇ ꜱᴘᴀᴍ ᴀᴛᴛı ɴᴀᴘᴀʀꜱıɴ:</h4>
-<textarea required style="width:100%;padding:10px;border-radius:6px;border:none;height:90px;"></textarea>
-</div>
-</div>
-
-<div class="rule-item">
-<div class="rule-num">5</div>
-<div class="rule-content">
-<h4>ᴀɢıʀ ᴋᴜꜰᴜʀ ᴇᴅᴇɴ ʏᴇᴛᴋɪʟɪ ɴᴀᴘᴀʀꜱıɴ:</h4>
-<textarea required style="width:100%;padding:10px;border-radius:6px;border:none;height:90px;"></textarea>
-</div>
-</div>
-
-<div class="rule-item">
-<div class="rule-num">6</div>
-<div class="rule-content">
-<h4>ᴋᴜʀᴜᴄᴜʏᴀ ʜᴀᴋᴀʀᴇᴛ ᴇᴅᴇɴ ᴋɪꜱɪʏᴇ ɴᴀᴘᴀʀꜱıɴ:</h4>
-<textarea required style="width:100%;padding:10px;border-radius:6px;border:none;height:90px;"></textarea>
-</div>
-</div>
-
-<div class="rule-item">
-<div class="rule-num">7</div>
-<div class="rule-content">
-<h4>ɴᴇᴅᴇɴ ʙɪᴢɪ ᴛᴇʀᴄɪʜ ᴇᴅɪʏᴏʀꜱᴜɴᴜᴢ:</h4>
-<textarea required style="width:100%;padding:10px;border-radius:6px;border:none;height:90px;"></textarea>
-</div>
-</div>
-
-<button type="submit" style="margin-top:30px;width:100%;padding:15px;background:#10b981;border:none;border-radius:8px;color:white;font-size:1.1rem;">
-Başvuruyu Gönder
-</button>
-</form>
-</div>
-</section>
-<!-- ================= BİTTİ ================= -->
-
-<footer id="footer">
-<div class="footer-logo">BRUTAL<span>NETWORK</span></div>
-<p style="color:#64748b;">© 2026 BrutalNetwork Minecraft Sunucusu.</p>
-</footer>
 
 <script>
-function toggleMenu(){
-document.getElementById("sidebar").classList.toggle("active");
-document.querySelector(".overlay").classList.toggle("active");
-}
+    const productsData = {
+        vip: [
+            {icon: "fas fa-user-shield", title: "VIP", desc: "Özel kit, özel kasılma alanı, özel günlük ödül.", oldPrice: "80 Kredi", newPrice: "40 Kredi"},
+            {icon: "fas fa-crown", title: "MEGAVIP", desc: "Özel kit, özel kasılma alanı, özel günlük ödül.", oldPrice: "150 Kredi", newPrice: "75 Kredi", popular: true},
+            {icon: "fas fa-gem", title: "ULTRAVIP", desc: "Özel kit, özel kasılma alanı, özel günlük ödül.", oldPrice: "300 Kredi", newPrice: "150 Kredi"},
+            {icon: "fas fa-star", title: "ENDRAVIP", desc: "Özel kit, özel kasılma alanı, özel günlük ödül.", oldPrice: "500 Kredi", newPrice: "250 Kredi"}
+        ],
+        keys: [
+            {icon: "fas fa-box", title: "ENDRA KASASI", desc: "Özel ödüller ve nadir eşyalar.", newPrice: "100 Kredi"},
+            {icon: "fas fa-box", title: "KIT KASASI", desc: "Kitler ve özel eşyalar.", newPrice: "150 Kredi"},
+            {icon: "fas fa-box", title: "LANET KASASI", desc: "Şansını test et!", newPrice: "100 Kredi"},
+            {icon: "fas fa-box", title: "ALET KASASI", desc: "Güçlü araçlar kazan!", newPrice: "75 Kredi"}
+        ],
+        coins: [
+            {icon: "fas fa-coins", title: "50 Oyun Parası", desc: "Hızlı başlangıç için.", newPrice: "Etkinlikle alınır"},
+            {icon: "fas fa-coins", title: "100 Oyun Parası", desc: "Daha fazla güç için.", newPrice: "Etkinlikle alınır"},
+            {icon: "fas fa-coins", title: "200 Oyun Parası", desc: "En güçlü başlangıç.", newPrice: "Etkinlikle alınır"}
+        ]
+    };
+
+    const productsGrid = document.querySelector(".products-grid");
+    const categoryButtons = document.querySelectorAll(".cat-btn");
+
+    function renderProducts(category) {
+        productsGrid.innerHTML = ""; // Önceki ürünleri temizle
+
+        productsData[category].forEach(product => {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.style = product.popular ? "border-color: rgba(96, 165, 250, 0.5); box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);" : "";
+
+            card.innerHTML = `
+                ${product.popular ? `<div style="position: absolute; top: 10px; right: -30px; background: var(--primary); color: white; padding: 5px 30px; transform: rotate(45deg); font-size: 0.8rem; font-weight: bold;">POPÜLER</div>` : ""}
+                <div class="prod-icon"><i class="${product.icon}"></i></div>
+                <div class="prod-title">${product.title}</div>
+                <p class="prod-desc">${product.desc}</p>
+                <div class="prod-price">${product.newPrice}</div>
+                <button class="buy-btn" style="background:#10b981; color:white; padding:10px 20px; border:none; border-radius:5px; cursor:pointer;">Satın Al</button>
+            `;
+
+            productsGrid.appendChild(card);
+        });
+    }
+
+    // Başlangıçta VIP ürünlerini göster
+    renderProducts("vip");
+
+    // Kategori butonlarına tıklama
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            categoryButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            renderProducts(btn.dataset.category);
+        });
+    });
 </script>
 
+
+    <section id="rules">
+        <div class="section-header reveal">
+            <h2>Kurallar & Yasal</h2>
+            <p>Güvenli ve keyifli bir oyun ortamı için.</p>
+        </div>
+
+        <div class="rules-container reveal">
+            <div class="rule-item">
+                <div class="rule-num">1</div>
+                <div class="rule-content">
+                    <h4>Hile ve 3. Parti Yazılımlar</h4>
+                    <p>Sunucu içerisinde hile, makro veya oyun deneyimini haksız yere etkileyecek herhangi bir yazılım kullanımı kesinlikle yasaktır ve kalıcı uzaklaştırma sebebidir.</p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-num">2</div>
+                <div class="rule-content">
+                    <h4>Saygı ve İletişim</h4>
+                    <p>Oyunculara, yetkililere veya sunucuya yönelik hakaret, küfür, aşağılayıcı söylem, siyasi propaganda veya reklam yapmak yasaktır.</p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-num">3</div>
+                <div class="rule-content">
+                    <h4>Hesap Güvenliği</h4>
+                    <p>Hesabınızın güvenliği tamamen size aittir. Basit şifreler kullanmayınız. Hesap çalınması durumunda sunucu yönetimi sorumlu tutulamaz.</p>
+                </div>
+            </div>
+
+            <div class="rule-item">
+                <div class="rule-num">4</div>
+                <div class="rule-content">
+                    <h4>Bug Kullanımı</h4>
+                    <p>Sunucuda oluşan hataları (bug) yönetime bildirmek zorunludur. Hataları kendi çıkarı için kullanmak hesabın sıfırlanmasına yol açar.</p>
+                </div>
+            </div>
+
+             <div class="rule-item">
+                <div class="rule-num">5</div>
+                <div class="rule-content">
+                    <h4>İade Politikası</h4>
+                    <p>Satın alınan dijital ürünlerde (VIP, Kredi vb.) iade yapılmamaktadır. Hatalı alımlarda Discord üzerinden destek talebi açabilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer-logo">BRUTAL<span>network</span></div>
+        <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+            <a href="#rules" style="color: #94a3b8; text-decoration: none;">İade Koşulları</a>
+            <a href="#rules" style="color: #94a3b8; text-decoration: none;">Gizlilik</a>
+            <a href="#rules" style="color: #94a3b8; text-decoration: none;">Kurallar</a>
+        </div>
+        
+        <p style="color: #64748b;">&copy; 2026 Brutal Network Minecraft Sunucusu.</p>
+        
+        <div class="dev-credit">
+            Powered by <span class="dev-name">JazzProject</span>
+        </div>
+    </footer>
+
+    <div id="toast">IP Kopyalandı:193.164.4.95</div>
+
+    <script>
+        // Scroll Animation Logic
+        window.addEventListener('scroll', reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Initial Trigger
+        reveal();
+        
+        // Menu Toggle
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Copy IP
+        function copyIP() {
+            const ip = "193.164.4.95";
+            navigator.clipboard.writeText(ip);
+            
+            const toast = document.getElementById("toast");
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+    </script>
 </body>
 </html>
