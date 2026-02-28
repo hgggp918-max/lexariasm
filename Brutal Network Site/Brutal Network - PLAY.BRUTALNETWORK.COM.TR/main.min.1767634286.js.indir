@@ -1,0 +1,31 @@
+$('[data-toggle="form-submit-with-loader"]').on("submit", function() {
+	var form = $(this);
+	var button = form.find("button[type=submit]");
+	button.css('pointer-events', 'none');
+	button.css('opacity', '0.5');
+	button.html(lang.loading);
+});
+
+/* CONSOLE MESSAGE */
+var consoleCopyrightStyle = [
+  "margin: 16px 0",
+  "border-radius: 10px"
+].join(";");
+var consoleWarningHeaderStyle = [
+  "color: #ff0000",
+  "font-size: 32px",
+  "font-weight: 600",
+  "margin: 8px 0"
+].join(";");
+var consoleWarningContentStyle = [
+  "background-color: #ff0000",
+  "color: #ffffff",
+  "padding: 20px",
+  "border-radius: 10px"
+].join(";");
+console.log(
+  "%cDUR!"+
+  `%cCopyright © ${new Date().getFullYear()} LeaderOS v5`,
+  consoleWarningHeaderStyle,
+  consoleCopyrightStyle
+);
