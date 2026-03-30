@@ -1,58 +1,368 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>JAZZ QUES- Bedava Sorgu Paneli 2026 | Vpn ile giriniz!!!  Türkiye'nin En İyi Ücretsiz Sorgu Paneli</title>
-    <meta name="description" content="CANO SYSTEM - Bedava Sorgu Paneli 2026. Türkiye'nin en gelişmiş ücretsiz sorgu paneli.">
-    <meta name="keywords" content="sorgu paneli, bedava sorgu paneli, ücretsiz sorgu paneli 2026, tc sorgu, mernis sorgu, gsm sorgu, cano system">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="CANO SYSTEM - Bedava Sorgu Paneli 2026">
-    <meta property="og:description" content="Türkiye'nin en gelişmiş ücretsiz sorgu paneli. TC, Ad Soyad, Aile, GSM sorguları.">
-    <meta property="og:type" content="website"><meta property="og:url" content="https://jazques.site">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Soyad Sorgu - CANO SYSTEM</title>
     <link rel="icon" href="/assets/logo.jpg" type="image/jpeg">
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-    <div class="page-loader" id="pageLoader"><div style="text-align:center;"><div class="loader-spinner"></div><div class="loader-text">CANO SYSTEM</div></div></div>
+    <div class="page-loader" id="pageLoader">
+        <div style="text-align:center;"><div class="loader-spinner"></div><div class="loader-text">CANO SYSTEM</div></div>
+    </div>
 
-    <div class="login-container">
-        <div class="login-bg-1"></div>
-        <div class="login-bg-2"></div>
+    
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<nav class="sidebar" id="sidebar">
+    <!-- Profile Card -->
+    <div class="sidebar-profile">
+        <div class="sidebar-pp-emoji">👤<span class="online-dot"></span></div>
+        <div class="sidebar-username">
+            CanoFree            <svg class="verified-tick" viewBox="0 0 22 22" width="16" height="16"><path d="M20.396 11c0-.795-.613-1.478-1.404-1.65-.23-1.19-.81-2.24-1.66-3.09-.51-.51-1.09-.92-1.73-1.2C15.3 4.08 14.66 3 13.7 3c-.74 0-1.39.37-1.7.94-.31-.57-.96-.94-1.7-.94-.96 0-1.6 1.08-1.9 2.06-.64.28-1.22.69-1.73 1.2-.85.85-1.43 1.9-1.66 3.09-.79.17-1.4.86-1.4 1.65 0 .8.63 1.49 1.42 1.65.24 1.18.82 2.23 1.66 3.07.51.51 1.09.92 1.73 1.2.3.98.94 2.06 1.9 2.06.74 0 1.39-.37 1.7-.94.31.57.96.94 1.7.94.96 0 1.6-1.08 1.9-2.06.64-.28 1.22-.69 1.73-1.2.84-.84 1.42-1.89 1.66-3.07.79-.16 1.42-.85 1.42-1.65z" fill="#1DA1F2"/><path d="M9.64 12.85l-2.05-2.05 1.06-1.06.99.99 3.15-3.15 1.06 1.06-4.21 4.21z" fill="#fff"/></svg>
+        </div>
+        <div class="sidebar-status">
+            <span class="status-online">● Çevrimiçi</span>
+            <span class="sidebar-badge free">FREE</span>
+        </div>
+    </div>
 
-        <div class="login-box">
-            <div class="login-logo">
-                <h1>JAZZ<span>SYSTEM</span></h1>
-                <p>Sorgu & Yönetim Paneli</p>
+    <!-- Ana Menü -->
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">ANA MENÜ</div>
+        <a href="/dashboard.php" class="sidebar-item ">
+            <span class="si">🏠</span> Ana Sayfa
+        </a>
+    </div>
+
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">MARKET</div>
+        <a href="/market.php" class="sidebar-item ">
+            <span class="si">🛒</span> Fiyat Listesi
+        </a>
+    </div>
+
+    <!-- Ücretsiz Çözümler -->
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">ÜCRETSIZ ÇÖZÜMLER</div>
+
+        <div class="sidebar-cat" data-target="mernis_free">
+            <div class="cat-left"><span class="si">🏛</span> Mernis Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="mernis_free">
+            <a href="/sorgu.php?type=tc" class="sidebar-child "><span class="tag-free">FREE</span> TC Sorgu</a>
+            <a href="/sorgu.php?type=adsoyad" class="sidebar-child active"><span class="tag-free">FREE</span> Ad Soyad Sorgu</a>
+            <a href="/sorgu.php?type=aile" class="sidebar-child "><span class="tag-free">FREE</span> Aile Sorgusu</a>
+            <a href="/sorgu.php?type=sulale" class="sidebar-child "><span class="tag-free">FREE</span> Şecere (Sulale)</a>
+            <a href="/sorgu.php?type=es" class="sidebar-child "><span class="tag-free">FREE</span> Eş Sorgusu</a>
+            <a href="/sorgu.php?type=cocuk" class="sidebar-child "><span class="tag-free">FREE</span> Çocuk Sorgusu</a>
+            <a href="/sorgu.php?type=anne" class="sidebar-child "><span class="tag-free">FREE</span> Anne Sorgusu</a>
+            <a href="/sorgu.php?type=baba" class="sidebar-child "><span class="tag-free">FREE</span> Baba Sorgusu</a>
+        </div>
+
+        <div class="sidebar-cat" data-target="gsm_free">
+            <div class="cat-left"><span class="si">📱</span> GSM Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="gsm_free">
+            <a href="/sorgu.php?type=gsmtc" class="sidebar-child "><span class="tag-free">FREE</span> GSM → TC</a>
+            <a href="/sorgu.php?type=tcgsm" class="sidebar-child "><span class="tag-free">FREE</span> TC → GSM</a>
+            <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> GSM → TC 2026</a>
+            <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC → GSM 2026</a>
+        </div>
+    </div>
+
+    <!-- Premium Çözümler -->
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">PREMIUM ÇÖZÜMLER</div>
+                <div class="sidebar-cat" data-target="prem_mernis">
+            <div class="cat-left"><span class="si">🆔</span> Mernis 2026</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_mernis">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> TC Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> Ad Soyad Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> Aile Sorgusu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> Şecere (Sulale)</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> Eş Sorgusu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> Çocuk Sorgusu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> Anne Sorgusu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">2026</span> Baba Sorgusu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_maliye">
+            <div class="cat-left"><span class="si">💼</span> Maliye Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_maliye">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC - İşyeri</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC - İşyeri Arkadaş</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC - İşyeri Müdür</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC - Maaş</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_adres">
+            <div class="cat-left"><span class="si">📍</span> Adres Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_adres">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Adres Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Hane</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC - Vergi No</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Vergi No - TC</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_arazi">
+            <div class="cat-left"><span class="si">🏔</span> Arazi Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_arazi">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC - Tapu (2025)</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Ada Parsel (2025)</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_iban">
+            <div class="cat-left"><span class="si">🏦</span> IBAN Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_iban">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> IBAN Sorgu V1</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> IBAN Sorgu V2</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_saglik">
+            <div class="cat-left"><span class="si">🩺</span> Sağlık Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_saglik">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Nöbetçi Eczane</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Hastane Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Randevu Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Aşı Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Reçete Sorgu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_kimlik">
+            <div class="cat-left"><span class="si">🪪</span> Kimlik Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_kimlik">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Kimlik Oluşturucu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Hayat Hikaye Detay</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_askerlik">
+            <div class="cat-left"><span class="si">🎖</span> Askerlik Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_askerlik">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Askerlik Sorgu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_plaka">
+            <div class="cat-left"><span class="si">🚗</span> Plaka Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_plaka">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Plakadan TC</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TC'den Plaka</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Plakadan GSM</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> GSM'den Plaka</a>
+                    </div>
+                <div class="sidebar-cat" data-target="prem_vesika">
+            <div class="cat-left"><span class="si">📷</span> Vesika Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="prem_vesika">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> E-Okul Vesika</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Ehliyet Vesika</a>
+                    </div>
             </div>
-            <div class="login-card">
-                                <form method="POST">
-                    <input type="hidden" name="csrf_token" value="abd5256edf1276984339d9a2e7b8b5a35a90eafa58c73c752e11da0d23e5226c">
-                    <input type="hidden" name="action" value="login">
-                    <div class="form-group"><input type="text" name="email" class="form-input" placeholder="Email veya Kullanıcı Adı" autocomplete="username" required></div>
-                    <div class="form-group"><input type="password" name="password" class="form-input" placeholder="Şifre" autocomplete="current-password" required></div>
-                    <button type="submit" class="btn btn-primary">GİRİŞ YAP</button>
+
+    <!-- VIP Özellikler -->
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">VİP ÖZELLİKLER</div>
+                <div class="sidebar-cat" data-target="vip_insta">
+            <div class="cat-left"><span class="si">📸</span> Instagram Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_insta">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Gizli Profil Görüntüleme</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Instagram Sızması</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> DM Mesaj Takibi</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Gizli Hikaye İzleme</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Şifresiz Takipçi Paneli</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_tiktok">
+            <div class="cat-left"><span class="si">🎵</span> TikTok Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_tiktok">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Gizli Profil Görüntüleme</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> TikTok Sızması</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> DM Mesaj Takibi</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Şifresiz Takipçi Paneli</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_edevlet">
+            <div class="cat-left"><span class="si">🏛</span> E-Devlet İşlemleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_edevlet">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> E-İmza Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> E-Devlet Giriş</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Kişiye Ait İmza</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> E-Devlet Vesika</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Pasaport Bilgileri</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> QR Kodlu İkametgah</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Adına Kayıtlı GSM</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Enabiz Takip</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_telefon">
+            <div class="cat-left"><span class="si">📞</span> Telefon İşlemleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_telefon">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Telefon Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> IMEI Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Anlık Konum Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Fatura Detay Döküm</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Arama Kayıtları</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> İnternet Trafiği</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Gizli Numara Sorgu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_polnet">
+            <div class="cat-left"><span class="si">🚨</span> POLNET</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_polnet">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Scil Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Kom Arşiv Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Tem Arşiv Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Gözaltı Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Kişi Karıştığı Olaylar</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Şahıs Adli İşlemleri</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Adli Evrak Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Dava Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> İcra Sorgu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_wp">
+            <div class="cat-left"><span class="si">💬</span> WhatsApp Çözümleri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_wp">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> WhatsApp Sızması</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Silinen Mesajları Kurtar</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_gps">
+            <div class="cat-left"><span class="si">📡</span> Canlı Takip & GPS</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_gps">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Numaradan Canlı Konum</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Geçmiş Konum Hareketleri</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Sinyal Kesici (Jammer)</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_medya">
+            <div class="cat-left"><span class="si">🖼</span> Medya & Galeri</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_medya">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Galeri Sızması (Android)</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Silinen Fotoğrafları Kurtar</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_seyahat">
+            <div class="cat-left"><span class="si">✈️</span> Konaklama & Seyahat</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_seyahat">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Otel Konaklama Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Uçak/Otobüs Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Sınır Giriş-Çıkış Sorgu</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Pasaport - Vize Sorgu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_finans">
+            <div class="cat-left"><span class="si">💳</span> Finans & Banka</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_finans">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Banka Hesap Bakiyesi</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Kredi Kartı Hareketleri</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Aktif POS Cihazı Sorgu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_arsiv">
+            <div class="cat-left"><span class="si">🗄</span> Gelişmiş Arşiv</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_arsiv">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Polis Telsiz Logları</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Adli Sicil (Sabika) Sorgu</a>
+                    </div>
+                <div class="sidebar-cat" data-target="vip_rat">
+            <div class="cat-left"><span class="si">🖥</span> Cihaz Kontrol (RAT)</div>
+            <span class="cat-toggle-icon">▼</span>
+        </div>
+        <div class="sidebar-children" id="vip_rat">
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Mikrofon Dinleme</a>
+                        <a href="/market.php" class="sidebar-child locked"><span class="tag-vip">VIP</span> Dosya Yöneticisi Erişimi</a>
+                    </div>
+            </div>
+
+    <!-- Sistem -->
+    <div class="sidebar-section" style="padding-bottom:24px;">
+        <div class="sidebar-section-title">SİSTEM</div>
+        <a href="/profile.php" class="sidebar-item ">
+            <span class="si">👤</span> Profil
+        </a>
+        <a href="/logout.php" class="sidebar-item sidebar-logout">
+            <span class="si">⏻</span> Güvenli Çıkış
+        </a>
+    </div>
+</nav>
+    <header class="topbar" id="topbar">
+    <div class="topbar-left">
+        <button class="topbar-toggle" id="sidebarToggle">☰</button>
+        <span class="topbar-brand">CANO<span>SYSTEM</span></span>
+    </div>
+    <div class="topbar-right">
+        <a href="/profile.php" class="topbar-avatar-emoji" title="Profil">👤</a>
+        <a href="/logout.php" class="topbar-power" title="Güvenli Çıkış">⏻</a>
+    </div>
+</header>
+
+    <main class="main-content" id="mainContent">
+        <div class="content-inner fade-in" style="max-width:800px;">
+            <h2 style="font-size:20px;margin-bottom:20px;display:flex;align-items:center;gap:10px;">
+                🔍 Ad Soyad Sorgu            </h2>
+
+            <div class="card query-form" style="margin-bottom:20px;padding:20px;">
+                <form id="queryForm" action="/api/query.php" method="POST" onsubmit="event.preventDefault();doQuery('queryForm','queryResult');">
+                    <input type="hidden" name="csrf_token" value="c308ef38505a82aa696f893ca99c97d867a7fc51c3660a97f5f737792e9a8738">
+                    <input type="hidden" name="type" value="adsoyad">
+
+                    <div class="form-row">
+                                                <div class="form-group" style="margin-bottom:10px;">
+                            <label style="font-size:11px;">Ad </label>
+                            <input type="text" name="ad" class="form-input" style="padding:11px 14px;font-size:14px;" placeholder="Ad giriniz" >
+                        </div>
+                                                <div class="form-group" style="margin-bottom:10px;">
+                            <label style="font-size:11px;">Soyad </label>
+                            <input type="text" name="soyad" class="form-input" style="padding:11px 14px;font-size:14px;" placeholder="Soyad giriniz" >
+                        </div>
+                                                <div class="form-group" style="margin-bottom:10px;">
+                            <label style="font-size:11px;">İl <span style="color:var(--text-muted);font-weight:400;">(opsiyonel)</span></label>
+                            <input type="text" name="il" class="form-input" style="padding:11px 14px;font-size:14px;" placeholder="İl giriniz" >
+                        </div>
+                                                <div class="form-group" style="margin-bottom:10px;">
+                            <label style="font-size:11px;">İlçe <span style="color:var(--text-muted);font-weight:400;">(opsiyonel)</span></label>
+                            <input type="text" name="ilce" class="form-input" style="padding:11px 14px;font-size:14px;" placeholder="İlçe giriniz" >
+                        </div>
+                                            </div>
+
+                                        <p style="color:var(--text-muted);font-size:12px;margin-bottom:12px;">ℹ️ İl ve İlçe zorunlu değildir.</p>
+                    
+                    <button type="submit" class="btn btn-primary" style="max-width:200px;padding:11px 20px;font-size:13px;">🔍 SORGU YAP</button>
                 </form>
-                <div class="divider"><span>veya</span></div>
-                <button class="btn btn-secondary" onclick="openModal('freeModal')">🎁 ÜCRETSİZ GİRİŞ (CANOFREE)</button>
             </div>
-            <div class="login-footer">CANO SYSTEM v2.0 — Powered by <span>Cano</span></div>
-        </div>
-    </div>
 
-    <div class="modal-overlay" id="freeModal">
-        <div class="modal">
-            <button class="tg-popup-close" onclick="closeModal('freeModal')">✕</button>
-            <div style="font-size:36px;margin-bottom:6px;">🎁</div>
-            <h3>CanoFree Hesap</h3>
-            <p>Ücretsiz demo hesabıyla panele giriş yapılacak.</p>
-            <div class="modal-actions">
-                <button class="btn btn-secondary btn-sm" onclick="closeModal('freeModal')">İptal</button>
-                <form method="POST" style="flex:1;"><input type="hidden" name="csrf_token" value="abd5256edf1276984339d9a2e7b8b5a35a90eafa58c73c752e11da0d23e5226c"><input type="hidden" name="action" value="canofree">
-                <button type="submit" class="btn btn-primary btn-sm btn-block">Devam Et</button></form>
+            <div class="card query-result" id="queryResult" style="padding:20px;">
+                <div class="no-result" style="color:var(--text-muted);font-size:13px;">Sorgu sonuçları burada görünecek</div>
             </div>
         </div>
-    </div>
+    </main>
+
     <script src="/assets/js/main.js"></script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"177a159039e8471bbd644203dfe5f8d6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
